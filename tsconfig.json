@@ -1,9 +1,55 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		/* Projects */
+		"incremental": true,
+		"composite": true,
+
+		/* Language and Environment */
+		"useDefineForClassFields": true,
+		"moduleDetection": "force",
+
+		/* Modules */
+		"module": "NodeNext",
+		"types": ["node"],
+		"resolvePackageJsonExports": true,
+		"resolvePackageJsonImports": true,
+
+		/* Emit */
+		"declaration": true,
+		"declarationMap": true,
+
+		/* Interop Constraints */
+		"isolatedDeclarations": true,
+		"erasableSyntaxOnly": true,
+
+		/* Type Checking */
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"useUnknownInCatchVariables": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"exactOptionalPropertyTypes": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+
+		/* Completeness */
+		"skipDefaultLibCheck": true,
+
+		/* SvelteKit */
 		"rewriteRelativeImportExtensions": true,
-		"allowJs": true,
-		"checkJs": true,
+		"allowJs": false,
+		"checkJs": false,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,

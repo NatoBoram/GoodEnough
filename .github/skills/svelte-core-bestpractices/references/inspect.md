@@ -7,10 +7,10 @@ The `$inspect` rune is roughly equivalent to `console.log`, with the exception t
 ```svelte
 <!--- file: App.svelte --->
 <script>
-	let count = $state(0);
-	let message = $state('hello');
+	let count = $state(0)
+	let message = $state('hello')
 
-	$inspect(count, message); // will console.log when `count` or `message` change
+	$inspect(count, message) // will console.log when `count` or `message` change
 </script>
 
 <button onclick={() => count++}>Increment</button>
@@ -30,13 +30,13 @@ On updates, a stack trace will be printed, making it easy to find the origin of 
 ```svelte
 <!--- file: App.svelte --->
 <script>
-	let count = $state(0);
+	let count = $state(0)
 
 	$inspect(count).with((type, count) => {
 		if (type === 'update') {
-			debugger; // or `console.trace`, or whatever you want
+			debugger // or `console.trace`, or whatever you want
 		}
-	});
+	})
 </script>
 
 <button onclick={() => count++}>Increment</button>
@@ -48,7 +48,7 @@ On updates, a stack trace will be printed, making it easy to find the origin of 
 
 This rune, added in 5.14, causes the surrounding function to be _traced_ in development. Any time the function re-runs as part of an [effect](https://svelte.dev/docs/svelte/$effect/llms.txt) or a [derived](https://svelte.dev/docs/svelte/$derived/llms.txt), information will be printed to the console about which pieces of reactive state caused the effect to fire.
 
-```svelte
+```patch
 <script>
 	import { doSomeWork } from './elsewhere';
 

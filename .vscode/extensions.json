@@ -1,8 +1,13 @@
 {
 	"recommendations": [
-		"svelte.svelte-vscode",
-		"esbenp.prettier-vscode",
+		"bradlc.vscode-tailwindcss",
+		"davidanson.vscode-markdownlint",
 		"dbaeumer.vscode-eslint",
-		"bradlc.vscode-tailwindcss"
+		"esbenp.prettier-vscode",
+		"github.vscode-github-actions",
+		"github.vscode-pull-request-github",
+		"ms-azuretools.vscode-containers",
+		"svelte.svelte-vscode",
+		"vitest.explorer"
 	]
 }

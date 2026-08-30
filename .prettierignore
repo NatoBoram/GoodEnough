@@ -1,10 +1,13 @@
 # Package Managers
+bun.lock
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
-bun.lock
-bun.lockb
 
 # Miscellaneous
-/static/
+/.pnpm-store/
+/coverage/
+/dist/
+/docs/
 /drizzle/
+/node_modules/
