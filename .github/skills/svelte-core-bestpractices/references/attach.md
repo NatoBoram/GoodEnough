@@ -51,7 +51,7 @@ A useful pattern is for a function, such as `tooltip` in this example, to _retur
 <button {@attach tooltip(content)}> Hover me </button>
 ```
 
-Since the `tooltip(content)` expression runs inside an [effect](https://svelte.dev/docs/svelte/$effect/llms.txt), the attachment will be destroyed and recreated whenever `content` changes. The same thing would happen for any state read _inside_ the attachment function when it first runs. (If this isn't what you want, see [Controlling when attachments re-run](#Controlling-when-attachments-re-run).)
+Since the `tooltip(content)` expression runs inside an [effect](https://svelte.dev/docs/svelte/$effect/llms.txt), the attachment will be destroyed and recreated whenever `content` changes. The same thing would happen for any state read _inside_ the attachment function when it first runs. (If this isn't what you want, see [Controlling when attachments re-run](#controlling-when-attachments-re-run).)
 
 ## Inline attachments
 
