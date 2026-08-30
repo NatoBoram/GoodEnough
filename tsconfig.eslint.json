@@ -5,7 +5,7 @@
 		"drizzle.config.ts",
 		"eslint.config.ts",
 		"playwright.config.ts",
-		"src/**/*",
+		"src",
 		"vite.config.ts",
 		"vitest.shims.d.ts"
 	],

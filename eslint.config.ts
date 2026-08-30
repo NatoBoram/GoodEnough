@@ -22,6 +22,7 @@ export default defineConfig(
 			globals: { ...globals.browser, ...globals.node },
 			parserOptions: {
 				project: './tsconfig.eslint.json',
+				extraFileExtensions: ['.svelte'],
 			},
 		},
 		rules: {
