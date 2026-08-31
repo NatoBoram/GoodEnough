@@ -1,12 +1,12 @@
-import { sequence } from '@sveltejs/kit/hooks'
 import { building } from '$app/environment'
-import { auth } from '$lib/server/auth'
-import { svelteKitHandler } from 'better-auth/svelte-kit'
+import { getTextDirection } from '$lib/paraglide/runtime.js'
+import { paraglideMiddleware } from '$lib/paraglide/server.js'
+import { auth } from '$lib/server/auth.js'
 import type { Handle } from '@sveltejs/kit'
-import { getTextDirection } from '$lib/paraglide/runtime'
-import { paraglideMiddleware } from '$lib/paraglide/server'
+import { sequence } from '@sveltejs/kit/hooks'
+import { svelteKitHandler } from 'better-auth/svelte-kit'
 
-const handleParaglide: Handle = ({ event, resolve }) =>
+const handleParaglide: Handle = (({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
 		event.request = request
 
@@ -16,9 +16,9 @@ const handleParaglide: Handle = ({ event, resolve }) =>
 					.replace('%paraglide.lang%', locale)
 					.replace('%paraglide.dir%', getTextDirection(locale)),
 		})
-	})
+	})) satisfies Handle
 
-const handleBetterAuth: Handle = async ({ event, resolve }) => {
+const handleBetterAuth: Handle = (async ({ event, resolve }) => {
 	const session = await auth.api.getSession({ headers: event.request.headers })
 
 	if (session) {
@@ -27,6 +27,6 @@ const handleBetterAuth: Handle = async ({ event, resolve }) => {
 	}
 
 	return svelteKitHandler({ event, resolve, auth, building })
-}
+}) satisfies Handle
 
 export const handle: Handle = sequence(handleParaglide, handleBetterAuth)

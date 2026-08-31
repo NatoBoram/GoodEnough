@@ -1,36 +1,28 @@
-/// <reference types="vitest/config" />
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
-
-import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'vitest/config'
-import { playwright } from '@vitest/browser-playwright'
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 import adapter from '@sveltejs/adapter-node'
 import { sveltekit } from '@sveltejs/kit/vite'
+import tailwindcss from '@tailwindcss/vite'
+import { playwright } from '@vitest/browser-playwright'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
+import { defineConfig } from 'vitest/config'
 
 const dirname =
 	typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
-export default defineConfig({
+/** @see https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon */
+const config: ReturnType<typeof defineConfig> = defineConfig({
 	plugins: [
 		tailwindcss(),
 		sveltekit({
 			compilerOptions: {
-				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true,
 			},
 			adapter: adapter(),
-			typescript: {
-				config: config => {
-					config.include.push('../drizzle.config.ts')
-				},
-			},
+			typescript: {},
 		}),
-
 		paraglideVitePlugin({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide',
@@ -53,7 +45,6 @@ export default defineConfig({
 					exclude: ['src/lib/server/**'],
 				},
 			},
-
 			{
 				extends: './vite.config.ts',
 				test: {
@@ -63,7 +54,6 @@ export default defineConfig({
 					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}'],
 				},
 			},
-
 			{
 				extends: true,
 				plugins: [storybookTest({ configDir: path.join(dirname, '.storybook') })],
@@ -80,3 +70,5 @@ export default defineConfig({
 		],
 	},
 })
+
+export default config

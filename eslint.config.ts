@@ -83,6 +83,9 @@ export default defineConfig(
 			'@typescript-eslint/sort-type-constituents': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'func-style': ['error', 'declaration'],
+
+			// Unsafe call of a type that could not be resolved.
+			'@typescript-eslint/no-unsafe-call': 'off',
 		},
 	},
 

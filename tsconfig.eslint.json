@@ -2,8 +2,8 @@
 	"extends": "./tsconfig.json",
 	"include": [
 		".storybook/**/*",
-		"drizzle.config.ts",
 		"eslint.config.ts",
+		"kysely.config.ts",
 		"playwright.config.ts",
 		"src",
 		"vite.config.ts",

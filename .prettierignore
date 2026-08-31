@@ -9,5 +9,4 @@ yarn.lock
 /coverage/
 /dist/
 /docs/
-/drizzle/
 /node_modules/
