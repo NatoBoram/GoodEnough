@@ -3,4 +3,44 @@
  * Please do not edit it manually.
  */
 
-export interface DB {}
+import type { ColumnType } from 'kysely'
+
+export type Generated<T> =
+	T extends ColumnType<infer S, infer I, infer U>
+		? ColumnType<S, I | undefined, U>
+		: ColumnType<T, T | undefined, T>
+
+export interface Attributes {
+	id: Generated<string>
+	name: string
+	user: string
+}
+
+export interface Categories {
+	description: Generated<string>
+	id: Generated<string>
+	name: string
+	slug: string
+	user: string
+}
+
+export interface Items {
+	description: Generated<string>
+	id: Generated<string>
+	name: string
+	user: string
+}
+
+export interface Users {
+	email: string
+	id: Generated<string>
+	password: string
+	username: string
+}
+
+export interface DB {
+	attributes: Attributes
+	categories: Categories
+	items: Items
+	users: Users
+}
