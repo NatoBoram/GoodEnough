@@ -5,6 +5,7 @@
 		"eslint.config.ts",
 		"kysely.config.ts",
 		"playwright.config.ts",
+		"scripts",
 		"src",
 		"vite.config.ts",
 		"vitest.shims.d.ts"

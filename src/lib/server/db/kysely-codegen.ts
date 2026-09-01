@@ -10,37 +10,58 @@ export type Generated<T> =
 		? ColumnType<S, I | undefined, U>
 		: ColumnType<T, T | undefined, T>
 
-export interface Attributes {
+export type Timestamp = ColumnType<Date, Date | string, Date | string>
+
+export interface Accounts {
+	access_token: string | null
+	access_token_expires_at: Timestamp | null
+	account_id: string
+	created_at: Generated<Timestamp>
 	id: Generated<string>
-	name: string
-	user: string
+	id_token: string | null
+	issuer: string
+	password: string | null
+	provider_id: string
+	refresh_token: string | null
+	refresh_token_expires_at: Timestamp | null
+	scope: string | null
+	updated_at: Generated<Timestamp>
+	user_id: string
 }
 
-export interface Categories {
-	description: Generated<string>
+export interface Sessions {
+	created_at: Generated<Timestamp>
+	expires_at: Timestamp
 	id: Generated<string>
-	name: string
-	slug: string
-	user: string
-}
-
-export interface Items {
-	description: Generated<string>
-	id: Generated<string>
-	name: string
-	user: string
+	ip_address: string | null
+	token: string
+	updated_at: Generated<Timestamp>
+	user_agent: string | null
+	user_id: string
 }
 
 export interface Users {
+	created_at: Generated<Timestamp>
 	email: string
+	email_verified: Generated<boolean>
 	id: Generated<string>
-	password: string
-	username: string
+	image: string | null
+	name: string
+	updated_at: Generated<Timestamp>
+}
+
+export interface Verifications {
+	created_at: Generated<Timestamp>
+	expires_at: Timestamp
+	id: Generated<string>
+	identifier: string
+	updated_at: Generated<Timestamp>
+	value: string
 }
 
 export interface DB {
-	attributes: Attributes
-	categories: Categories
-	items: Items
+	accounts: Accounts
+	sessions: Sessions
 	users: Users
+	verifications: Verifications
 }

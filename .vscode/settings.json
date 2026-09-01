@@ -1,4 +1,11 @@
 {
+	"[css][dockercompose][github-actions-workflow][html][javascript][javascriptreact][json][json5][jsonc][markdown][php][postcss][scss][snippets][sql][typescript][typescriptreact][xml][yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.minimap.maxColumn": 100
+	},
+	"[css][dockercompose][github-actions-workflow][html][javascript][javascriptreact][json][json5][jsonc][php][postcss][scss][snippets][sql][svelte][typescript][typescriptreact][xml][yaml]": {
+		"editor.rulers": [100]
+	},
 	"files.associations": {
 		"*.css": "tailwindcss"
 	}
