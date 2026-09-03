@@ -1,6 +1,8 @@
 import type { AdminClientPlugin, UsernameClientPlugin } from '$lib/types/better_auth.js'
-import { createAuthClient, type AuthClient, type BetterAuthClientOptions } from 'better-auth/client'
+import type { BetterAuthClientOptions } from 'better-auth/client'
 import { adminClient, usernameClient } from 'better-auth/client/plugins'
+import type { SvelteAuthClient } from 'better-auth/svelte'
+import { createAuthClient } from 'better-auth/svelte'
 
 const authOptions: BetterAuthClientOptions & {
 	readonly plugins: readonly [AdminClientPlugin, UsernameClientPlugin]
@@ -8,4 +10,4 @@ const authOptions: BetterAuthClientOptions & {
 	plugins: [adminClient(), usernameClient()],
 } as const satisfies BetterAuthClientOptions
 
-export const authClient: AuthClient<typeof authOptions> = createAuthClient(authOptions)
+export const authClient: SvelteAuthClient<typeof authOptions> = createAuthClient(authOptions)
