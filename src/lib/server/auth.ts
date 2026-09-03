@@ -1,11 +1,13 @@
 import { getRequestEvent } from '$app/server'
 import type { Auth, BetterAuthOptions } from 'better-auth'
 import { betterAuth } from 'better-auth'
-import { admin, type AdminOptions } from 'better-auth/plugins'
+import type { AdminOptions, UsernameOptions, UsernamePlugin } from 'better-auth/plugins'
+import { admin, username } from 'better-auth/plugins'
 import { sveltekitCookies } from 'better-auth/svelte-kit'
-import type { PostgresPool } from 'kysely'
 import pkg from '../../../package.json' with { type: 'json' }
-import { pool } from './db/db.ts'
+import type { AdminPlugin, Database, SvelteKitCookiesPlugin } from '../types/better_auth.ts'
+import { db } from './db/db.ts'
+import type { DB } from './db/kysely-codegen.ts'
 import { BETTER_AUTH_SECRET, BETTER_AUTH_URL } from './env.ts'
 
 const adminOptions: AdminOptions = {
@@ -29,18 +31,25 @@ const adminOptions: AdminOptions = {
 	},
 } as const satisfies AdminOptions
 
+const usernameOptions: UsernameOptions = {
+	schema: { user: { fields: { displayUsername: 'display_username' }, modelName: 'users' } },
+} as const satisfies UsernameOptions
+
 const authOptions: BetterAuthOptions & {
-	readonly database: PostgresPool
-	readonly plugins: [
-		ReturnType<typeof admin<typeof adminOptions>>,
-		ReturnType<typeof sveltekitCookies>,
-	]
+	readonly plugins: readonly [AdminPlugin, UsernamePlugin, SvelteKitCookiesPlugin]
+	readonly database: Database<DB>
 } = {
 	appName: pkg.name,
 	baseURL: BETTER_AUTH_URL.toString(),
-	database: pool,
+	database: {
+		db,
+		type: 'postgres',
+		casing: 'snake',
+		transaction: true,
+	},
 	plugins: [
 		admin(adminOptions),
+		username(usernameOptions),
 		sveltekitCookies(getRequestEvent), // make sure this is the last plugin in the array
 	],
 	secret: BETTER_AUTH_SECRET,
@@ -84,5 +93,4 @@ const authOptions: BetterAuthOptions & {
 		storeIdentifier: { default: 'hashed' },
 	},
 } as const satisfies BetterAuthOptions
-
 export const auth: Auth<typeof authOptions> = betterAuth(authOptions)

@@ -13,7 +13,9 @@ create table "users" (
 	"role" text,
 	"banned" boolean,
 	"ban_reason" text,
-	"ban_expires" timestamptz
+	"ban_expires" timestamptz,
+	"username" text unique,
+	"display_username" text
 );
 
 create table "sessions" (

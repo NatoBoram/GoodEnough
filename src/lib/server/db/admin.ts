@@ -51,5 +51,5 @@ export async function seedAdmin(): Promise<void> {
 		return
 	}
 
-	logger.info({ user: created.value }, 'Seeded admin user')
+	logger.info({ user: created.value.user }, 'Seeded admin user')
 }

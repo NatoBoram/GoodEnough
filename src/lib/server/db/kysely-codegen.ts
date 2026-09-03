@@ -16,7 +16,7 @@ export type Numeric = ColumnType<string, number | string, number | string>
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>
 
-export interface Accounts {
+export interface Account {
 	access_token: string | null
 	access_token_expires_at: Timestamp | null
 	account_id: string
@@ -33,14 +33,14 @@ export interface Accounts {
 	user_id: string
 }
 
-export interface Attributes {
+export interface Attribute {
 	id: Generated<string>
 	name: string
 	type: AttributeType
 	user: string
 }
 
-export interface AttributeValues {
+export interface AttributeValue {
 	attribute: string
 	id: Generated<string>
 	item: string
@@ -49,7 +49,7 @@ export interface AttributeValues {
 	value_text: string | null
 }
 
-export interface Categories {
+export interface Category {
 	created_at: Generated<Timestamp>
 	description: Generated<string>
 	id: Generated<string>
@@ -60,17 +60,17 @@ export interface Categories {
 	user: string
 }
 
-export interface CategoryAttributes {
+export interface CategoryAttribute {
 	attribute: string
 	category: string
 }
 
-export interface CategoryItems {
+export interface CategoryItem {
 	category: string
 	item: string
 }
 
-export interface Items {
+export interface Item {
 	created_at: Generated<Timestamp>
 	description: Generated<string>
 	id: Generated<string>
@@ -80,7 +80,7 @@ export interface Items {
 	user: string
 }
 
-export interface Reviews {
+export interface Review {
 	comment: Generated<string>
 	created_at: Generated<Timestamp>
 	id: Generated<string>
@@ -90,7 +90,7 @@ export interface Reviews {
 	user: string
 }
 
-export interface Sessions {
+export interface Session {
 	created_at: Generated<Timestamp>
 	expires_at: Timestamp
 	id: Generated<string>
@@ -102,11 +102,12 @@ export interface Sessions {
 	user_id: string
 }
 
-export interface Users {
+export interface User {
 	ban_expires: Timestamp | null
 	ban_reason: string | null
 	banned: boolean | null
 	created_at: Generated<Timestamp>
+	display_username: string | null
 	email: string
 	email_verified: Generated<boolean>
 	id: Generated<string>
@@ -114,9 +115,10 @@ export interface Users {
 	name: string
 	role: string | null
 	updated_at: Generated<Timestamp>
+	username: string | null
 }
 
-export interface Verifications {
+export interface Verification {
 	created_at: Generated<Timestamp>
 	expires_at: Timestamp
 	id: Generated<string>
@@ -126,15 +128,15 @@ export interface Verifications {
 }
 
 export interface DB {
-	accounts: Accounts
-	attribute_values: AttributeValues
-	attributes: Attributes
-	categories: Categories
-	category_attributes: CategoryAttributes
-	category_items: CategoryItems
-	items: Items
-	reviews: Reviews
-	sessions: Sessions
-	users: Users
-	verifications: Verifications
+	accounts: Account
+	attribute_values: AttributeValue
+	attributes: Attribute
+	categories: Category
+	category_attributes: CategoryAttribute
+	category_items: CategoryItem
+	items: Item
+	reviews: Review
+	sessions: Session
+	users: User
+	verifications: Verification
 }
