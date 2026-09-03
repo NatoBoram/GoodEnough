@@ -94,6 +94,7 @@ export interface Sessions {
 	created_at: Generated<Timestamp>
 	expires_at: Timestamp
 	id: Generated<string>
+	impersonated_by: string | null
 	ip_address: string | null
 	token: string
 	updated_at: Generated<Timestamp>
@@ -102,12 +103,16 @@ export interface Sessions {
 }
 
 export interface Users {
+	ban_expires: Timestamp | null
+	ban_reason: string | null
+	banned: boolean | null
 	created_at: Generated<Timestamp>
 	email: string
 	email_verified: Generated<boolean>
 	id: Generated<string>
 	image: string | null
 	name: string
+	role: string | null
 	updated_at: Generated<Timestamp>
 }
 

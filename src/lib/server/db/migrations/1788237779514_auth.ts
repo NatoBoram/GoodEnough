@@ -9,7 +9,11 @@ create table "users" (
 	"email_verified" boolean default false not null,
 	"image" text,
 	"created_at" timestamptz default current_timestamp not null,
-	"updated_at" timestamptz default current_timestamp not null
+	"updated_at" timestamptz default current_timestamp not null,
+	"role" text,
+	"banned" boolean,
+	"ban_reason" text,
+	"ban_expires" timestamptz
 );
 
 create table "sessions" (
@@ -21,7 +25,8 @@ create table "sessions" (
 	"ip_address" text,
 	"user_agent" text,
 	"user_id" uuid not null references "users" ("id")
-		on delete cascade
+		on delete cascade,
+	"impersonated_by" text
 );
 
 create table "accounts" (

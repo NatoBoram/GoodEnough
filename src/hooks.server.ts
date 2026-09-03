@@ -1,10 +1,17 @@
 import { building } from '$app/environment'
+import { logger } from '$lib/logger.js'
 import { getTextDirection } from '$lib/paraglide/runtime.js'
 import { paraglideMiddleware } from '$lib/paraglide/server.js'
 import { auth } from '$lib/server/auth.js'
-import type { Handle } from '@sveltejs/kit'
+import { seedAdmin } from '$lib/server/db/admin.js'
+import type { Handle, ServerInit } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
 import { svelteKitHandler } from 'better-auth/svelte-kit'
+
+export const init: ServerInit = (async () => {
+	logger.info('Initializing...')
+	await seedAdmin()
+}) satisfies ServerInit
 
 const handleParaglide: Handle = (({ event, resolve }) =>
 	paraglideMiddleware(event.request, ({ request, locale }) => {
