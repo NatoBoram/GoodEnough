@@ -5,10 +5,14 @@
 
 import type { ColumnType } from 'kysely'
 
+export type AttributeType = 'boolean' | 'number' | 'text'
+
 export type Generated<T> =
 	T extends ColumnType<infer S, infer I, infer U>
 		? ColumnType<S, I | undefined, U>
 		: ColumnType<T, T | undefined, T>
+
+export type Numeric = ColumnType<string, number | string, number | string>
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>
 
@@ -27,6 +31,63 @@ export interface Accounts {
 	scope: string | null
 	updated_at: Generated<Timestamp>
 	user_id: string
+}
+
+export interface Attributes {
+	id: Generated<string>
+	name: string
+	type: AttributeType
+	user: string
+}
+
+export interface AttributeValues {
+	attribute: string
+	id: Generated<string>
+	item: string
+	value_boolean: boolean | null
+	value_number: Numeric | null
+	value_text: string | null
+}
+
+export interface Categories {
+	created_at: Generated<Timestamp>
+	description: Generated<string>
+	id: Generated<string>
+	image: string | null
+	name: string
+	slug: string
+	updated_at: Generated<Timestamp>
+	user: string
+}
+
+export interface CategoryAttributes {
+	attribute: string
+	category: string
+}
+
+export interface CategoryItems {
+	category: string
+	item: string
+}
+
+export interface Items {
+	created_at: Generated<Timestamp>
+	description: Generated<string>
+	id: Generated<string>
+	image: string | null
+	name: string
+	updated_at: Generated<Timestamp>
+	user: string
+}
+
+export interface Reviews {
+	comment: Generated<string>
+	created_at: Generated<Timestamp>
+	id: Generated<string>
+	item: string
+	rating: number
+	updated_at: Generated<Timestamp>
+	user: string
 }
 
 export interface Sessions {
@@ -61,6 +122,13 @@ export interface Verifications {
 
 export interface DB {
 	accounts: Accounts
+	attribute_values: AttributeValues
+	attributes: Attributes
+	categories: Categories
+	category_attributes: CategoryAttributes
+	category_items: CategoryItems
+	items: Items
+	reviews: Reviews
 	sessions: Sessions
 	users: Users
 	verifications: Verifications
