@@ -30,7 +30,7 @@ const handleParaglide: Handle = (({ event, resolve }) =>
 const handleBetterAuth: Handle = (async ({ event, resolve }) => {
 	const session = await auth.api.getSession({ headers: event.request.headers })
 	if (!session) {
-		return svelteKitHandler({ event, resolve, auth, building })
+		return resolve(event)
 	}
 	event.locals.session = session.session
 
@@ -41,14 +41,20 @@ const handleBetterAuth: Handle = (async ({ event, resolve }) => {
 		.executeTakeFirst()
 	if (!user) {
 		logger.error(session, 'User not found')
-		return svelteKitHandler({ event, resolve, auth, building })
+		return resolve(event)
 	}
 	event.locals.user = user
 
-	return svelteKitHandler({ event, resolve, auth, building })
+	return resolve(event)
 }) satisfies Handle
 
 const handleLogger: Handle = (async ({ event, resolve }) => {
+	// Timing
+	const start = performance.now()
+	const response = await resolve(event)
+	const end = performance.now()
+	const duration = end - start
+
 	// Request
 	const ipResult = syncResult(() => event.getClientAddress(), 'getting client address')
 	if (!ipResult.ok) logger.error({ error: ipResult.error })
@@ -60,12 +66,6 @@ const handleLogger: Handle = (async ({ event, resolve }) => {
 	const protocol = event.url.protocol.substring(0, event.url.protocol.length - 1)
 	const referrer = event.request.referrer || '-'
 	const userAgent = event.request.headers.get('User-Agent')
-
-	// Timing
-	const start = performance.now()
-	const response = await resolve(event)
-	const end = performance.now()
-	const duration = end - start
 
 	// Response
 	const { status } = response
@@ -79,4 +79,9 @@ const handleLogger: Handle = (async ({ event, resolve }) => {
 	return response
 }) satisfies Handle
 
-export const handle: Handle = sequence(handleLogger, handleParaglide, handleBetterAuth)
+export const handle: Handle = sequence(
+	handleLogger,
+	handleParaglide,
+	handleBetterAuth,
+	({ event, resolve }) => svelteKitHandler({ event, resolve, auth, building }),
+)
