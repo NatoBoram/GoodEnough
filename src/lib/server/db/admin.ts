@@ -42,7 +42,13 @@ export async function seedAdmin(): Promise<void> {
 
 	const created = await asyncResult(
 		auth.api.createUser({
-			body: { email: ADMIN_EMAIL, name: 'Admin', password: ADMIN_PASSWORD, role: 'admin' },
+			body: {
+				data: { username: 'admin' },
+				email: ADMIN_EMAIL,
+				name: 'Admin',
+				password: ADMIN_PASSWORD,
+				role: 'admin',
+			},
 		}),
 		'creating admin user',
 	)

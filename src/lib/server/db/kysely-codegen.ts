@@ -36,6 +36,7 @@ export interface Account {
 export interface Attribute {
 	id: Generated<string>
 	name: string
+	slug: string
 	type: AttributeType
 	user: string
 }
@@ -76,6 +77,7 @@ export interface Item {
 	id: Generated<string>
 	image: string | null
 	name: string
+	slug: string
 	updated_at: Generated<Timestamp>
 	user: string
 }
