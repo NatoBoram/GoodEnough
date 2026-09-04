@@ -9,7 +9,9 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitest/config'
 
 const dirname =
-	typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
+	typeof import.meta.dirname !== 'undefined'
+		? import.meta.dirname
+		: path.dirname(fileURLToPath(import.meta.url))
 
 /** @see https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon */
 const config: ReturnType<typeof defineConfig> = defineConfig({

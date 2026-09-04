@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation'
 	import { resolve } from '$app/paths'
 	import { authClient } from '$lib/client/auth_client.js'
+	import { m } from '$lib/paraglide/messages.js'
 	import { onMount } from 'svelte'
 
 	onMount(async () => {
@@ -11,4 +12,4 @@
 	})
 </script>
 
-Logging out...
+{m.auth_logging_out()}

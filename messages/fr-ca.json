@@ -1,4 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from fr-ca!"
+	"auth_email": "Email",
+	"auth_log_in": "Se connecter",
+	"auth_log_out": "Se déconnecter",
+	"auth_logging_out": "Déconnexion en cours...",
+	"auth_name": "Nom",
+	"auth_password": "Mot de passe",
+	"auth_sign_up": "S'inscrire",
+	"auth_username": "Nom d'utilisateur",
+	"app_name": "GoodEnough"
 }

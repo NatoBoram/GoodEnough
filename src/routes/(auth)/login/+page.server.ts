@@ -5,8 +5,8 @@ import { fail, redirect } from '@sveltejs/kit'
 import { APIError } from 'better-auth/api'
 import type { Actions, PageServerLoad } from './$types.ts'
 
-export const load: PageServerLoad = (event => {
-	if (event.locals.user) return redirect(302, '/')
+export const load: PageServerLoad = (({ locals }) => {
+	if (locals.user) return redirect(302, '/')
 	return {}
 }) satisfies PageServerLoad
 

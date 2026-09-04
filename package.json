@@ -59,13 +59,15 @@
 		"db:migrate:make": "kysely migrate:make",
 		"db:reset": "docker compose down; docker volume rm goodenough_goodenough-postgres",
 		"db:regenerate": "pnpm run db:reset && pnpm run db:start && sleep 10 && pnpm run db:migrate && pnpm run db:generate && pnpm run dev",
-		"auth:schema": "auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.sql --adapter kysely --dialect postgresql --yes"
+		"auth:schema": "auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.sql --adapter kysely --dialect postgresql --yes",
+		"sync": "svelte-kit sync"
 	},
 	"devDependencies": {
 		"@better-auth/kysely-adapter": "^1.7.2",
 		"@chromatic-com/storybook": "latest",
 		"@eslint/js": "^10.0.1",
 		"@inlang/paraglide-js": "^2.18.2",
+		"@natoboram/heroicons.svelte": "^1.2.0",
 		"@natoboram/load_env": "^2.0.3",
 		"@playwright/test": "^1.60.0",
 		"@storybook/addon-a11y": "^10.5.10",
