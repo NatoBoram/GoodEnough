@@ -35,12 +35,13 @@ const usernameOptions: UsernameOptions = {
 	schema: { user: { fields: { displayUsername: 'display_username' }, modelName: 'users' } },
 } as const satisfies UsernameOptions
 
-const authOptions: BetterAuthOptions & {
+export const authOptions: BetterAuthOptions & {
 	readonly plugins: readonly [AdminPlugin, UsernamePlugin, SvelteKitCookiesPlugin]
 	readonly database: Database<DB>
 } = {
 	appName: pkg.name,
 	baseURL: BETTER_AUTH_URL.toString(),
+	trustedOrigins: [BETTER_AUTH_URL.origin],
 	database: {
 		db,
 		type: 'postgres',

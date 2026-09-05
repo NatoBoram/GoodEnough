@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { enhance } from '$app/forms'
 	import { resolve } from '$app/paths'
+	import { page } from '$app/state'
 	import {
 		ArrowRightEndOnRectangle,
 		ArrowRightStartOnRectangle,
@@ -10,33 +10,73 @@
 	import { m } from './paraglide/messages.js'
 	import type { User } from './server/db/kysely-codegen.ts'
 
+	export type TopBarUser = Pick<Selectable<User>, 'id' | 'name' | 'username'>
+
 	interface Props {
-		readonly profile: Selectable<User> | undefined
-		readonly user: Selectable<User> | undefined
+		readonly profile: TopBarUser | undefined
+		readonly user: TopBarUser | undefined
+		readonly onLogout?: () => void
 	}
 
-	const { profile, user }: Props = $props()
+	const { profile, user, onLogout }: Props = $props()
+
+	const pathname = $derived(page.url.pathname)
+	const username = $derived(profile?.username ?? user?.username)
+	const name = $derived(profile?.name ?? user?.name)
 </script>
 
-<nav class="flex flex-row items-center justify-between gap-4 p-4">
-	<div class="flex flex-row items-center gap-4">
-		<BookOpen class="size-6" />
-		{profile?.name || m.app_name()}
-	</div>
+<nav>
+	<!-- Icons -->
+	<div class="flex flex-row items-center justify-between gap-4 p-4">
+		<div class="flex flex-row items-center gap-4">
+			<a href={resolve('/')}> <BookOpen class="size-6" /> </a>
+			{name || m.app_name()}
+		</div>
 
-	<div class="flex flex-row items-center gap-4">
-		{#if user}
-			<form method="post" action={resolve('/logout')} use:enhance>
-				<button type="submit" title={m.auth_log_out()}>
-					<ArrowRightStartOnRectangle class="size-6" />
+		<div class="flex flex-row items-center gap-4">
+			<!-- Log out -->
+			{#if user}
+				<button onclick={onLogout} title={m.auth_log_out()}>
+					<ArrowRightStartOnRectangle class="size-6 cursor-pointer" />
 				</button>
-			</form>
-		{/if}
+			{/if}
 
-		{#if !user}
-			<a href={resolve('/login')} title={m.auth_log_in()}>
-				<ArrowRightEndOnRectangle class="size-6" />
-			</a>
-		{/if}
+			<!-- Log in -->
+			{#if !user}
+				<a href={resolve('/login')} title={m.auth_log_in()}>
+					<ArrowRightEndOnRectangle class="size-6" />
+				</a>
+			{/if}
+		</div>
 	</div>
+
+	<!-- Tabs -->
+	{#if username}
+		<ul class="flex flex-row items-center gap-4 p-4">
+			<li>
+				<a
+					href={resolve('/(app)/[username]/categories', { username })}
+					class:font-semibold={pathname === resolve('/(app)/[username]/categories', { username })}
+				>
+					{m.nav_categories()}
+				</a>
+			</li>
+			<li>
+				<a
+					href={resolve('/(app)/[username]/items', { username })}
+					class:font-semibold={pathname === resolve('/(app)/[username]/items', { username })}
+				>
+					{m.nav_items()}
+				</a>
+			</li>
+			<li>
+				<a
+					href={resolve('/(app)/[username]/attributes', { username })}
+					class:font-semibold={pathname === resolve('/(app)/[username]/attributes', { username })}
+				>
+					{m.nav_attributes()}
+				</a>
+			</li>
+		</ul>
+	{/if}
 </nav>

@@ -8,7 +8,7 @@ import { seedAdmin } from '$lib/server/db/admin.js'
 import { db } from '$lib/server/db/db.js'
 import type { Handle, ServerInit } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
-import { svelteKitHandler } from 'better-auth/svelte-kit'
+import type { BetterAuthOptions } from 'better-auth'
 
 export const init: ServerInit = (async () => {
 	logger.info('Initializing...')
@@ -27,7 +27,7 @@ const handleParaglide: Handle = (({ event, resolve }) =>
 		})
 	})) satisfies Handle
 
-const handleBetterAuth: Handle = (async ({ event, resolve }) => {
+const handleSession: Handle = (async ({ event, resolve }) => {
 	const session = await auth.api.getSession({ headers: event.request.headers })
 	if (!session) {
 		return resolve(event)
@@ -47,6 +47,20 @@ const handleBetterAuth: Handle = (async ({ event, resolve }) => {
 
 	return resolve(event)
 }) satisfies Handle
+
+/**
+ * A re-implementation of `svelteKitHandler` with a less buggy {@link isAuthPath}.
+ */
+const handleBetterAuth: Handle = (async ({ event, resolve }) => {
+	if (building) return resolve(event)
+	const { request, url } = event
+	if (isAuthPath(url, auth.options)) return auth.handler(request)
+	return resolve(event)
+}) satisfies Handle
+
+function isAuthPath(url: URL, options: BetterAuthOptions) {
+	return url.pathname.startsWith(options.basePath || '/api/auth/')
+}
 
 const handleLogger: Handle = (async ({ event, resolve }) => {
 	// Timing
@@ -82,6 +96,6 @@ const handleLogger: Handle = (async ({ event, resolve }) => {
 export const handle: Handle = sequence(
 	handleLogger,
 	handleParaglide,
+	handleSession,
 	handleBetterAuth,
-	({ event, resolve }) => svelteKitHandler({ event, resolve, auth, building }),
 )

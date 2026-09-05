@@ -8,5 +8,8 @@
 	"auth_password": "Password",
 	"auth_sign_up": "Sign up",
 	"auth_username": "Username",
-	"app_name": "GoodEnough"
+	"app_name": "GoodEnough",
+	"nav_categories": "Categories",
+	"nav_attributes": "Attributes",
+	"nav_items": "Items"
 }
