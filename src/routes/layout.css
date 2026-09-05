@@ -1,3 +1,62 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@layer base {
+}
+
+@theme {
+	/* Nord */
+
+	/* Polar Night */
+	--color-nord-00: #2e3440;
+	--color-nord-01: #3b4252;
+	--color-nord-02: #434c5e;
+	--color-nord-03: #4c566a;
+
+	/* Snow Storm */
+	--color-nord-04: #d8dee9;
+	--color-nord-05: #e5e9f0;
+	--color-nord-06: #eceff4;
+
+	/* Frost */
+	--color-nord-07: #8fbcbb;
+	--color-nord-08: #88c0d0;
+	--color-nord-09: #81a1c1;
+	--color-nord-10: #5e81ac;
+
+	/* Aurora */
+	--color-nord-11: #bf616a;
+	--color-nord-12: #d08770;
+	--color-nord-13: #ebcb8b;
+	--color-nord-14: #a3be8c;
+	--color-nord-15: #b48ead;
+
+	--color-nord-07-lighter: oklch(from var(--color-nord-07) calc(l + 0.15) c h);
+	--color-nord-08-lighter: oklch(from var(--color-nord-08) calc(l + 0.15) c h);
+	--color-nord-09-lighter: oklch(from var(--color-nord-09) calc(l + 0.15) c h);
+	--color-nord-10-lighter: oklch(from var(--color-nord-10) calc(l + 0.15) c h);
+	--color-nord-11-lighter: oklch(from var(--color-nord-11) calc(l + 0.15) c h);
+	--color-nord-12-lighter: oklch(from var(--color-nord-12) calc(l + 0.15) c h);
+	--color-nord-13-lighter: oklch(from var(--color-nord-13) calc(l + 0.15) c h);
+	--color-nord-14-lighter: oklch(from var(--color-nord-14) calc(l + 0.15) c h);
+	--color-nord-15-lighter: oklch(from var(--color-nord-15) calc(l + 0.15) c h);
+
+	--color-nord-07-darker: oklch(from var(--color-nord-07) calc(l - 0.15) c h);
+	--color-nord-08-darker: oklch(from var(--color-nord-08) calc(l - 0.15) c h);
+	--color-nord-09-darker: oklch(from var(--color-nord-09) calc(l - 0.15) c h);
+	--color-nord-10-darker: oklch(from var(--color-nord-10) calc(l - 0.15) c h);
+	--color-nord-11-darker: oklch(from var(--color-nord-11) calc(l - 0.15) c h);
+	--color-nord-12-darker: oklch(from var(--color-nord-12) calc(l - 0.15) c h);
+	--color-nord-13-darker: oklch(from var(--color-nord-13) calc(l - 0.15) c h);
+	--color-nord-14-darker: oklch(from var(--color-nord-14) calc(l - 0.15) c h);
+	--color-nord-15-darker: oklch(from var(--color-nord-15) calc(l - 0.15) c h);
+
+	--color-bg-page: light-dark(var(--color-nord-06), var(--color-nord-00));
+	--color-bg-surface: light-dark(var(--color-nord-05), var(--color-nord-01));
+	--color-bg-container: light-dark(var(--color-nord-04), var(--color-nord-02));
+
+	--color-text-primary: light-dark(var(--color-nord-00), var(--color-nord-06));
+	--color-text-secondary: light-dark(var(--color-nord-01), var(--color-nord-05));
+	--color-text-muted: light-dark(var(--color-nord-02), var(--color-nord-06));
+}

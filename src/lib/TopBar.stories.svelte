@@ -23,6 +23,8 @@
 		argTypes: {},
 		args: {
 			onLogout: fn(),
+			toggleDark: fn(),
+			toggleLight: fn(),
 		},
 	})
 </script>

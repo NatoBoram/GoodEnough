@@ -15,7 +15,31 @@
 	async function onLogout() {
 		return authClient.signOut({ fetchOptions: { onSuccess: invalidateAll } })
 	}
+
+	function toggleTheme(theme: 'dark' | 'light') {
+		localStorage.setItem('theme', theme)
+		switch (theme) {
+			case 'light':
+				document.documentElement.classList.remove('scheme-dark')
+				document.documentElement.classList.add('scheme-light')
+				break
+
+			case 'dark':
+			default:
+				document.documentElement.classList.remove('scheme-light')
+				document.documentElement.classList.add('scheme-dark')
+				break
+		}
+	}
+
+	function toggleDark() {
+		toggleTheme('dark')
+	}
+
+	function toggleLight() {
+		toggleTheme('light')
+	}
 </script>
 
-<TopBar {profile} {user} {onLogout} />
+<TopBar {profile} {user} {onLogout} {toggleDark} {toggleLight} />
 {@render children()}

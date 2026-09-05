@@ -67,7 +67,7 @@
 		"@chromatic-com/storybook": "latest",
 		"@eslint/js": "^10.0.1",
 		"@inlang/paraglide-js": "^2.18.2",
-		"@natoboram/heroicons.svelte": "^1.2.0",
+		"@natoboram/heroicons.svelte": "^1.2.1",
 		"@natoboram/load_env": "^2.0.3",
 		"@playwright/test": "^1.60.0",
 		"@storybook/addon-a11y": "^10.5.10",

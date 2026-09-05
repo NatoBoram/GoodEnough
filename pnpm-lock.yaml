@@ -21,8 +21,8 @@ importers:
         specifier: ^2.18.2
         version: 2.25.0(typescript@6.0.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12))
       '@natoboram/heroicons.svelte':
-        specifier: ^1.2.0
-        version: 1.2.0(svelte@5.57.0(@typescript-eslint/types@8.68.0))(tailwindcss@4.3.3)
+        specifier: ^1.2.1
+        version: 1.2.1(svelte@5.57.0(@typescript-eslint/types@8.68.0))
       '@natoboram/load_env':
         specifier: ^2.0.3
         version: 2.0.3
@@ -1062,14 +1062,10 @@ packages:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
 
-  '@natoboram/heroicons.svelte@1.2.0':
-    resolution: {integrity: sha512-mD8oJQKxmYJo8QWp0HiBxdIiG9Kybjt7wCQTW7CUhFtzAvFS0EdKVpOZAO6TC6OVopWlXAB1WGpN5Lv+WDMvxg==}
+  '@natoboram/heroicons.svelte@1.2.1':
+    resolution: {integrity: sha512-Ly06luhBSPBperW+SL3TCH688RH+sVZL3Diyuk/9onJFUDcN2qO4k4VPOk61NZhc4SwvefWY9VldwUTFnTgB5g==}
     peerDependencies:
-      svelte: ^5.19.2
-      tailwindcss: ^4.0.0
-    peerDependenciesMeta:
-      tailwindcss:
-        optional: true
+      svelte: ^5.0.0
 
   '@natoboram/load_env@2.0.3':
     resolution: {integrity: sha512-JLIAH62o3VcFk0iomw8awfzrCTxtaf/EUhNqOGMC00gSEe7RhgXxLSh4OsK03U3bz0ty9Lf9s5Xhs2yvdc06Cw==}
@@ -5112,11 +5108,9 @@ snapshots:
       '@tybys/wasm-util': 0.10.3
     optional: true
 
-  '@natoboram/heroicons.svelte@1.2.0(svelte@5.57.0(@typescript-eslint/types@8.68.0))(tailwindcss@4.3.3)':
+  '@natoboram/heroicons.svelte@1.2.1(svelte@5.57.0(@typescript-eslint/types@8.68.0))':
     dependencies:
       svelte: 5.57.0(@typescript-eslint/types@8.68.0)
-    optionalDependencies:
-      tailwindcss: 4.3.3
 
   '@natoboram/load_env@2.0.3': {}
 
