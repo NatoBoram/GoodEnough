@@ -45,11 +45,11 @@
 	let theme: string | null = $state(null)
 </script>
 
-<nav class="bg-bg-surface pt-4 text-text-secondary">
+<nav class="bg-surface pt-4 text-dim">
 	<!-- Top -->
 	<div class="flex flex-row items-center justify-between gap-4 px-4 pb-4">
 		<!-- Left -->
-		<div class="flex flex-row items-center gap-4 font-semibold text-text-primary">
+		<div class="flex flex-row items-center gap-4 font-semibold text-main">
 			<a href={resolve('/')}> <BookOpen class="size-6" /> </a>
 			<a href={username ? resolve('/(app)/[username]', { username }) : resolve('/')}>
 				{name || m.app_name()}
@@ -96,34 +96,34 @@
 		{@const isAttribute = pathname === resolve('/(app)/[username]/attributes', { username })}
 
 		<ul class="flex flex-row items-center gap-2 px-2">
-			<li class="border-b-3 border-bg-surface pb-1" class:border-nord-10={isCategory}>
+			<li class="border-b-3 border-surface pb-1" class:border-tertiary={isCategory}>
 				<a
 					href={resolve('/(app)/[username]/categories', { username })}
 					class:font-semibold={isCategory}
-					class:text-text-primary={isCategory}
-					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-bg-container"
+					class:text-main={isCategory}
+					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-container"
 				>
 					<Folder class="size-4" />
 					{m.nav_categories()}
 				</a>
 			</li>
-			<li class="border-b-3 border-bg-surface pb-1" class:border-nord-10={isItem}>
+			<li class="border-b-3 border-surface pb-1" class:border-tertiary={isItem}>
 				<a
 					href={resolve('/(app)/[username]/items', { username })}
 					class:font-semibold={isItem}
-					class:text-text-primary={isItem}
-					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-bg-container"
+					class:text-main={isItem}
+					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-container"
 				>
 					<Square2Stack class="size-4" />
 					{m.nav_items()}
 				</a>
 			</li>
-			<li class="border-b-3 border-bg-surface pb-1" class:border-nord-10={isAttribute}>
+			<li class="border-b-3 border-surface pb-1" class:border-tertiary={isAttribute}>
 				<a
 					href={resolve('/(app)/[username]/attributes', { username })}
 					class:font-semibold={isAttribute}
-					class:text-text-primary={isAttribute}
-					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-bg-container"
+					class:text-main={isAttribute}
+					class="flex flex-row items-center gap-2 rounded px-3 py-1 hover:bg-container"
 				>
 					<Swatch class="size-4" />
 					{m.nav_attributes()}

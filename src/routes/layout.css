@@ -52,11 +52,22 @@
 	--color-nord-14-darker: oklch(from var(--color-nord-14) calc(l - 0.15) c h);
 	--color-nord-15-darker: oklch(from var(--color-nord-15) calc(l - 0.15) c h);
 
-	--color-bg-page: light-dark(var(--color-nord-06), var(--color-nord-00));
-	--color-bg-surface: light-dark(var(--color-nord-05), var(--color-nord-01));
-	--color-bg-container: light-dark(var(--color-nord-04), var(--color-nord-02));
+	--color-page: light-dark(var(--color-nord-06), var(--color-nord-00));
+	--color-surface: light-dark(var(--color-nord-05), var(--color-nord-01));
+	--color-container: light-dark(var(--color-nord-04), var(--color-nord-02));
 
-	--color-text-primary: light-dark(var(--color-nord-00), var(--color-nord-06));
-	--color-text-secondary: light-dark(var(--color-nord-01), var(--color-nord-05));
-	--color-text-muted: light-dark(var(--color-nord-02), var(--color-nord-06));
+	--color-main: light-dark(var(--color-nord-00), var(--color-nord-06));
+	--color-dim: light-dark(var(--color-nord-01), var(--color-nord-05));
+	--color-disabled: light-dark(var(--color-nord-02), var(--color-nord-04));
+
+	--color-accent: var(--color-nord-07);
+	--color-primary: var(--color-nord-08);
+	--color-secondary: var(--color-nord-09);
+	--color-tertiary: var(--color-nord-10);
+
+	--color-error: var(--color-nord-11);
+	--color-danger: var(--color-nord-12);
+	--color-warning: var(--color-nord-13);
+	--color-success: var(--color-nord-14);
+	--color-info: var(--color-nord-15);
 }
