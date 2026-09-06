@@ -10,4 +10,8 @@
 	})
 </script>
 
-<Story name="Default" args={{}} />
+<Story name="Default" args={{ class: 'scheme-light-dark' }} tags={['!dev']} />
+
+<Story name="Light" args={{ class: 'scheme-light' }} />
+
+<Story name="Dark" args={{ class: 'scheme-dark' }} />
