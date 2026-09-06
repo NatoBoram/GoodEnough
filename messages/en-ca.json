@@ -13,6 +13,14 @@
 	"auth_sign_up": "Sign up",
 	"auth_username": "Username",
 
+	"categories_new_title": "Create a category",
+	"categories_new_subtitle": "Categories allow you to group your items and to give them attributes.",
+	"categories_new_name": "Name",
+	"categories_new_description": "Description",
+	"categories_new_description_hint": "Accepts Markdown.",
+	"categories_new_slug": "Slug",
+	"categories_new_submit": "Create category",
+
 	"nav_attributes": "Attributes",
 	"nav_categories": "Categories",
 	"nav_items": "Items",

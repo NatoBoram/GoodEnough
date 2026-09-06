@@ -11,9 +11,9 @@ export const load: PageServerLoad = (async event => {
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-	default: async event => {
+	default: async ({ request }) => {
 		const result = await asyncResult(
-			auth.api.signOut({ headers: event.request.headers }),
+			auth.api.signOut({ headers: request.headers }),
 			'signing out',
 			APIError,
 		)

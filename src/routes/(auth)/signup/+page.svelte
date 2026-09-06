@@ -8,10 +8,10 @@
 </script>
 
 <form
-	method="POST"
 	action="?/signup"
-	use:enhance
 	class="container mx-auto flex max-w-md flex-col p-4"
+	method="POST"
+	use:enhance
 >
 	<BookOpen class="size-6 self-center" />
 	<h1 class="mb-4 self-center text-lg font-semibold">{m.auth_sign_up()}</h1>

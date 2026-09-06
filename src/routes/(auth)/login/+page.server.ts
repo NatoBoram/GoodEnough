@@ -11,15 +11,15 @@ export const load: PageServerLoad = (({ locals }) => {
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-	login: async event => {
-		const formData = await event.request.formData()
+	login: async ({ request }) => {
+		const formData = await request.formData()
 		const email = getFormString(formData, 'email')
 		const password = getFormString(formData, 'password')
 
 		const signInEmail = await asyncResult(
 			auth.api.signInEmail({
 				body: { email, password, callbackURL: '/auth/verification-success' },
-				headers: event.request.headers,
+				headers: request.headers,
 			}),
 			'signing in',
 			APIError,

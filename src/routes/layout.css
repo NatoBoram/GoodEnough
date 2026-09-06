@@ -32,42 +32,151 @@
 	--color-nord-14: #a3be8c;
 	--color-nord-15: #b48ead;
 
-	--color-nord-07-lighter: oklch(from var(--color-nord-07) calc(l + 0.15) c h);
-	--color-nord-08-lighter: oklch(from var(--color-nord-08) calc(l + 0.15) c h);
-	--color-nord-09-lighter: oklch(from var(--color-nord-09) calc(l + 0.15) c h);
-	--color-nord-10-lighter: oklch(from var(--color-nord-10) calc(l + 0.15) c h);
-	--color-nord-11-lighter: oklch(from var(--color-nord-11) calc(l + 0.15) c h);
-	--color-nord-12-lighter: oklch(from var(--color-nord-12) calc(l + 0.15) c h);
-	--color-nord-13-lighter: oklch(from var(--color-nord-13) calc(l + 0.15) c h);
-	--color-nord-14-lighter: oklch(from var(--color-nord-14) calc(l + 0.15) c h);
-	--color-nord-15-lighter: oklch(from var(--color-nord-15) calc(l + 0.15) c h);
+	--color-nord-50: var(--color-nord-06);
+	--color-nord-100: var(--color-nord-05);
+	--color-nord-200: var(--color-nord-04);
+	--color-nord-300: color-mix(
+		in oklch,
+		var(--color-nord-04),
+		var(--color-nord-03) calc(100%/5 * 1)
+	);
+	--color-nord-400: color-mix(
+		in oklch,
+		var(--color-nord-04),
+		var(--color-nord-03) calc(100%/5 * 2)
+	);
+	--color-nord-500: color-mix(
+		in oklch,
+		var(--color-nord-04),
+		var(--color-nord-03) calc(100%/5 * 3)
+	);
+	--color-nord-600: color-mix(
+		in oklch,
+		var(--color-nord-04),
+		var(--color-nord-03) calc(100%/5 * 4)
+	);
+	--color-nord-700: var(--color-nord-03);
+	--color-nord-800: var(--color-nord-02);
+	--color-nord-900: var(--color-nord-01);
+	--color-nord-950: var(--color-nord-00);
 
-	--color-nord-07-darker: oklch(from var(--color-nord-07) calc(l - 0.15) c h);
-	--color-nord-08-darker: oklch(from var(--color-nord-08) calc(l - 0.15) c h);
-	--color-nord-09-darker: oklch(from var(--color-nord-09) calc(l - 0.15) c h);
-	--color-nord-10-darker: oklch(from var(--color-nord-10) calc(l - 0.15) c h);
-	--color-nord-11-darker: oklch(from var(--color-nord-11) calc(l - 0.15) c h);
-	--color-nord-12-darker: oklch(from var(--color-nord-12) calc(l - 0.15) c h);
-	--color-nord-13-darker: oklch(from var(--color-nord-13) calc(l - 0.15) c h);
-	--color-nord-14-darker: oklch(from var(--color-nord-14) calc(l - 0.15) c h);
-	--color-nord-15-darker: oklch(from var(--color-nord-15) calc(l - 0.15) c h);
+	--color-water-50: color-mix(in oklch, var(--color-nord-07), #fff calc(100%/6 * 5));
+	--color-water-100: color-mix(in oklch, var(--color-nord-07), #fff calc(100%/6 * 4));
+	--color-water-200: color-mix(in oklch, var(--color-nord-07), #fff calc(100%/6 * 3));
+	--color-water-300: color-mix(in oklch, var(--color-nord-07), #fff calc(100%/6 * 2));
+	--color-water-400: color-mix(in oklch, var(--color-nord-07), #fff calc(100%/6 * 1));
+	--color-water-500: oklch(from var(--color-nord-07) l c h);
+	--color-water-600: color-mix(in oklch, var(--color-nord-07), #000 calc(100%/10 * 1));
+	--color-water-700: color-mix(in oklch, var(--color-nord-07), #000 calc(100%/10 * 2));
+	--color-water-800: color-mix(in oklch, var(--color-nord-07), #000 calc(100%/10 * 3));
+	--color-water-900: color-mix(in oklch, var(--color-nord-07), #000 calc(100%/10 * 4));
+	--color-water-950: color-mix(in oklch, var(--color-nord-07), #000 calc(100%/10 * 5));
+	--color-ice-50: color-mix(in oklch, var(--color-nord-08), #fff calc(100%/6 * 5));
+	--color-ice-100: color-mix(in oklch, var(--color-nord-08), #fff calc(100%/6 * 4));
+	--color-ice-200: color-mix(in oklch, var(--color-nord-08), #fff calc(100%/6 * 3));
+	--color-ice-300: color-mix(in oklch, var(--color-nord-08), #fff calc(100%/6 * 2));
+	--color-ice-400: color-mix(in oklch, var(--color-nord-08), #fff calc(100%/6 * 1));
+	--color-ice-500: oklch(from var(--color-nord-08) l c h);
+	--color-ice-600: color-mix(in oklch, var(--color-nord-08), #000 calc(100%/10 * 1));
+	--color-ice-700: color-mix(in oklch, var(--color-nord-08), #000 calc(100%/10 * 2));
+	--color-ice-800: color-mix(in oklch, var(--color-nord-08), #000 calc(100%/10 * 3));
+	--color-ice-900: color-mix(in oklch, var(--color-nord-08), #000 calc(100%/10 * 4));
+	--color-ice-950: color-mix(in oklch, var(--color-nord-08), #000 calc(100%/10 * 5));
+	--color-arctic-50: color-mix(in oklch, var(--color-nord-09), #fff calc(100%/6 * 5));
+	--color-arctic-100: color-mix(in oklch, var(--color-nord-09), #fff calc(100%/6 * 4));
+	--color-arctic-200: color-mix(in oklch, var(--color-nord-09), #fff calc(100%/6 * 3));
+	--color-arctic-300: color-mix(in oklch, var(--color-nord-09), #fff calc(100%/6 * 2));
+	--color-arctic-400: color-mix(in oklch, var(--color-nord-09), #fff calc(100%/6 * 1));
+	--color-arctic-500: oklch(from var(--color-nord-09) l c h);
+	--color-arctic-600: color-mix(in oklch, var(--color-nord-09), #000 calc(100%/10 * 1));
+	--color-arctic-700: color-mix(in oklch, var(--color-nord-09), #000 calc(100%/10 * 2));
+	--color-arctic-800: color-mix(in oklch, var(--color-nord-09), #000 calc(100%/10 * 3));
+	--color-arctic-900: color-mix(in oklch, var(--color-nord-09), #000 calc(100%/10 * 4));
+	--color-arctic-950: color-mix(in oklch, var(--color-nord-09), #000 calc(100%/10 * 5));
+	--color-ocean-50: color-mix(in oklch, var(--color-nord-10), #fff calc(100%/6 * 5));
+	--color-ocean-100: color-mix(in oklch, var(--color-nord-10), #fff calc(100%/6 * 4));
+	--color-ocean-200: color-mix(in oklch, var(--color-nord-10), #fff calc(100%/6 * 3));
+	--color-ocean-300: color-mix(in oklch, var(--color-nord-10), #fff calc(100%/6 * 2));
+	--color-ocean-400: color-mix(in oklch, var(--color-nord-10), #fff calc(100%/6 * 1));
+	--color-ocean-500: oklch(from var(--color-nord-10) l c h);
+	--color-ocean-600: color-mix(in oklch, var(--color-nord-10), #000 calc(100%/10 * 1));
+	--color-ocean-700: color-mix(in oklch, var(--color-nord-10), #000 calc(100%/10 * 2));
+	--color-ocean-800: color-mix(in oklch, var(--color-nord-10), #000 calc(100%/10 * 3));
+	--color-ocean-900: color-mix(in oklch, var(--color-nord-10), #000 calc(100%/10 * 4));
+	--color-ocean-950: color-mix(in oklch, var(--color-nord-10), #000 calc(100%/10 * 5));
+	--color-aurora-red-50: color-mix(in oklch, var(--color-nord-11), #fff calc(100%/6 * 5));
+	--color-aurora-red-100: color-mix(in oklch, var(--color-nord-11), #fff calc(100%/6 * 4));
+	--color-aurora-red-200: color-mix(in oklch, var(--color-nord-11), #fff calc(100%/6 * 3));
+	--color-aurora-red-300: color-mix(in oklch, var(--color-nord-11), #fff calc(100%/6 * 2));
+	--color-aurora-red-400: color-mix(in oklch, var(--color-nord-11), #fff calc(100%/6 * 1));
+	--color-aurora-red-500: oklch(from var(--color-nord-11) l c h);
+	--color-aurora-red-600: color-mix(in oklch, var(--color-nord-11), #000 calc(100%/10 * 1));
+	--color-aurora-red-700: color-mix(in oklch, var(--color-nord-11), #000 calc(100%/10 * 2));
+	--color-aurora-red-800: color-mix(in oklch, var(--color-nord-11), #000 calc(100%/10 * 3));
+	--color-aurora-red-900: color-mix(in oklch, var(--color-nord-11), #000 calc(100%/10 * 4));
+	--color-aurora-red-950: color-mix(in oklch, var(--color-nord-11), #000 calc(100%/10 * 5));
+	--color-aurora-orange-50: color-mix(in oklch, var(--color-nord-12), #fff calc(100%/6 * 5));
+	--color-aurora-orange-100: color-mix(in oklch, var(--color-nord-12), #fff calc(100%/6 * 4));
+	--color-aurora-orange-200: color-mix(in oklch, var(--color-nord-12), #fff calc(100%/6 * 3));
+	--color-aurora-orange-300: color-mix(in oklch, var(--color-nord-12), #fff calc(100%/6 * 2));
+	--color-aurora-orange-400: color-mix(in oklch, var(--color-nord-12), #fff calc(100%/6 * 1));
+	--color-aurora-orange-500: oklch(from var(--color-nord-12) l c h);
+	--color-aurora-orange-600: color-mix(in oklch, var(--color-nord-12), #000 calc(100%/10 * 1));
+	--color-aurora-orange-700: color-mix(in oklch, var(--color-nord-12), #000 calc(100%/10 * 2));
+	--color-aurora-orange-800: color-mix(in oklch, var(--color-nord-12), #000 calc(100%/10 * 3));
+	--color-aurora-orange-900: color-mix(in oklch, var(--color-nord-12), #000 calc(100%/10 * 4));
+	--color-aurora-orange-950: color-mix(in oklch, var(--color-nord-12), #000 calc(100%/10 * 5));
+	--color-aurora-yellow-50: color-mix(in oklch, var(--color-nord-13), #fff calc(100%/6 * 5));
+	--color-aurora-yellow-100: color-mix(in oklch, var(--color-nord-13), #fff calc(100%/6 * 4));
+	--color-aurora-yellow-200: color-mix(in oklch, var(--color-nord-13), #fff calc(100%/6 * 3));
+	--color-aurora-yellow-300: color-mix(in oklch, var(--color-nord-13), #fff calc(100%/6 * 2));
+	--color-aurora-yellow-400: color-mix(in oklch, var(--color-nord-13), #fff calc(100%/6 * 1));
+	--color-aurora-yellow-500: oklch(from var(--color-nord-13) l c h);
+	--color-aurora-yellow-600: color-mix(in oklch, var(--color-nord-13), #000 calc(100%/10 * 1));
+	--color-aurora-yellow-700: color-mix(in oklch, var(--color-nord-13), #000 calc(100%/10 * 2));
+	--color-aurora-yellow-800: color-mix(in oklch, var(--color-nord-13), #000 calc(100%/10 * 3));
+	--color-aurora-yellow-900: color-mix(in oklch, var(--color-nord-13), #000 calc(100%/10 * 4));
+	--color-aurora-yellow-950: color-mix(in oklch, var(--color-nord-13), #000 calc(100%/10 * 5));
+	--color-aurora-green-50: color-mix(in oklch, var(--color-nord-14), #fff calc(100%/6 * 5));
+	--color-aurora-green-100: color-mix(in oklch, var(--color-nord-14), #fff calc(100%/6 * 4));
+	--color-aurora-green-200: color-mix(in oklch, var(--color-nord-14), #fff calc(100%/6 * 3));
+	--color-aurora-green-300: color-mix(in oklch, var(--color-nord-14), #fff calc(100%/6 * 2));
+	--color-aurora-green-400: color-mix(in oklch, var(--color-nord-14), #fff calc(100%/6 * 1));
+	--color-aurora-green-500: oklch(from var(--color-nord-14) l c h);
+	--color-aurora-green-600: color-mix(in oklch, var(--color-nord-14), #000 calc(100%/10 * 1));
+	--color-aurora-green-700: color-mix(in oklch, var(--color-nord-14), #000 calc(100%/10 * 2));
+	--color-aurora-green-800: color-mix(in oklch, var(--color-nord-14), #000 calc(100%/10 * 3));
+	--color-aurora-green-900: color-mix(in oklch, var(--color-nord-14), #000 calc(100%/10 * 4));
+	--color-aurora-green-950: color-mix(in oklch, var(--color-nord-14), #000 calc(100%/10 * 5));
+	--color-aurora-purple-50: color-mix(in oklch, var(--color-nord-15), #fff calc(100%/6 * 5));
+	--color-aurora-purple-100: color-mix(in oklch, var(--color-nord-15), #fff calc(100%/6 * 4));
+	--color-aurora-purple-200: color-mix(in oklch, var(--color-nord-15), #fff calc(100%/6 * 3));
+	--color-aurora-purple-300: color-mix(in oklch, var(--color-nord-15), #fff calc(100%/6 * 2));
+	--color-aurora-purple-400: color-mix(in oklch, var(--color-nord-15), #fff calc(100%/6 * 1));
+	--color-aurora-purple-500: oklch(from var(--color-nord-15) l c h);
+	--color-aurora-purple-600: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 1));
+	--color-aurora-purple-700: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 2));
+	--color-aurora-purple-800: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 3));
+	--color-aurora-purple-900: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 4));
+	--color-aurora-purple-950: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 5));
 
-	--color-page: light-dark(var(--color-nord-06), var(--color-nord-00));
-	--color-surface: light-dark(var(--color-nord-05), var(--color-nord-01));
-	--color-container: light-dark(var(--color-nord-04), var(--color-nord-02));
+	/* Semantic colours */
+	--color-page: light-dark(var(--color-nord-50), var(--color-nord-900));
+	--color-surface: light-dark(var(--color-nord-100), var(--color-nord-950));
+	--color-container: light-dark(var(--color-nord-200), var(--color-nord-900));
 
-	--color-main: light-dark(var(--color-nord-00), var(--color-nord-06));
-	--color-dim: light-dark(var(--color-nord-01), var(--color-nord-05));
-	--color-disabled: light-dark(var(--color-nord-02), var(--color-nord-04));
+	--color-main: light-dark(var(--color-nord-950), var(--color-nord-50));
+	--color-dim: light-dark(var(--color-nord-500), var(--color-nord-300));
+	--color-disabled: light-dark(var(--color-nord-800), var(--color-nord-200));
 
-	--color-accent: var(--color-nord-07);
-	--color-primary: var(--color-nord-08);
-	--color-secondary: var(--color-nord-09);
-	--color-tertiary: var(--color-nord-10);
+	--color-accent: var(--color-water-500);
+	--color-primary: var(--color-ice-500);
+	--color-secondary: var(--color-arctic-500);
+	--color-tertiary: var(--color-ocean-500);
 
-	--color-error: var(--color-nord-11);
-	--color-danger: var(--color-nord-12);
-	--color-warning: var(--color-nord-13);
-	--color-success: var(--color-nord-14);
-	--color-info: var(--color-nord-15);
+	--color-error: var(--color-aurora-red-500);
+	--color-danger: var(--color-aurora-orange-500);
+	--color-warning: var(--color-aurora-yellow-500);
+	--color-success: var(--color-aurora-green-500);
+	--color-info: var(--color-aurora-purple-500);
 }

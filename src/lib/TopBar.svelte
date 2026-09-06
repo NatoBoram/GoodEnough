@@ -91,9 +91,11 @@
 
 	<!-- Tabs -->
 	{#if username}
-		{@const isCategory = pathname === resolve('/(app)/[username]/categories', { username })}
-		{@const isItem = pathname === resolve('/(app)/[username]/items', { username })}
-		{@const isAttribute = pathname === resolve('/(app)/[username]/attributes', { username })}
+		{@const isCategory = pathname.startsWith(resolve('/(app)/[username]/categories', { username }))}
+		{@const isItem = pathname.startsWith(resolve('/(app)/[username]/items', { username }))}
+		{@const isAttribute = pathname.startsWith(
+			resolve('/(app)/[username]/attributes', { username }),
+		)}
 
 		<ul class="flex flex-row items-center gap-2 px-2">
 			<li class="border-b-3 border-surface pb-1" class:border-tertiary={isCategory}>

@@ -4,13 +4,13 @@
 	import { BookOpen } from '@natoboram/heroicons.svelte/24/solid'
 	import type { ActionData } from './$types.ts'
 
-	let { form }: { form: ActionData } = $props()
+	const { form }: { form: ActionData } = $props()
 </script>
 
 <form
 	action="?/login"
 	class="container mx-auto flex max-w-md flex-col p-4"
-	method="post"
+	method="POST"
 	use:enhance
 >
 	<BookOpen class="size-6 self-center" />
@@ -22,7 +22,7 @@
 	<label for="password" class="mb-1 text-sm font-semibold"> {m.auth_password()} </label>
 	<input type="password" name="password" class="mb-4 bg-container" />
 
-	<button type="submit" class="mb-4 rounded bg-success p-2">
+	<button type="submit" class="mb-4 self-end rounded bg-success p-2">
 		{m.auth_log_in()}
 	</button>
 
