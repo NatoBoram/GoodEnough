@@ -26,8 +26,10 @@ export default defineConfig(
 			},
 		},
 		rules: {
-			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
-			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+			/**
+			 * `typescript-eslint` strongly recommend that you do not use the `no-undef` lint rule on TypeScript projects.
+			 * @see https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+			 */
 			'no-undef': 'off',
 		},
 	},
@@ -43,8 +45,10 @@ export default defineConfig(
 		},
 	},
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
+		/**
+		 * Override or add rule settings here
+		 * @example 'svelte/button-has-type': 'error'
+		 */
 		rules: {
 			'@typescript-eslint/class-methods-use-this': [
 				'error',
@@ -83,11 +87,24 @@ export default defineConfig(
 			'@typescript-eslint/sort-type-constituents': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'func-style': ['error', 'declaration'],
+		},
+	},
 
+	{
+		files: ['**/*.svelte'],
+		rules: {
 			// Unsafe call of a type that could not be resolved.
 			'@typescript-eslint/no-unsafe-call': 'off',
+		},
+	},
+
+	{
+		files: ['**/*.stories.svelte'],
+		rules: {
 			// Unsafe assignment of an error typed value.
 			'@typescript-eslint/no-unsafe-assignment': 'off',
+			// Unsafe member access .username on a type that cannot be resolved.
+			'@typescript-eslint/no-unsafe-member-access': 'off',
 		},
 	},
 

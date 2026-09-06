@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths'
-	import { page } from '$app/state'
+	import type { ResolvedPathname } from '$app/types'
 	import { Spinner } from '@natoboram/heroicons.svelte'
 	import { Folder, Square2Stack, Swatch } from '@natoboram/heroicons.svelte/16/solid'
 	import {
@@ -11,46 +11,46 @@
 		Sun,
 	} from '@natoboram/heroicons.svelte/24/solid'
 	import type { Selectable } from 'kysely'
-	import { onMount } from 'svelte'
+	import type { ClassValue } from 'svelte/elements'
 	import { m } from './paraglide/messages.js'
 	import type { User } from './server/db/kysely-codegen.ts'
+	import type { Theme } from './theme.ts'
 
 	export type TopBarUser = Pick<Selectable<User>, 'id' | 'name' | 'username'>
 
 	interface Props {
 		readonly onLogout: () => void
+		readonly pathname: ResolvedPathname
 		readonly profile: TopBarUser | undefined
+		readonly theme: Theme | null
 		readonly toggleDark: () => void
 		readonly toggleLight: () => void
 		readonly user: TopBarUser | undefined
+
+		readonly class?: ClassValue | null | undefined
 	}
 
-	const { profile, user, onLogout, toggleLight, toggleDark }: Props = $props()
+	const {
+		class: className,
+		onLogout,
+		pathname,
+		profile,
+		theme,
+		toggleDark,
+		toggleLight,
+		user,
+	}: Props = $props()
 
-	const pathname = $derived(page.url.pathname)
 	const username = $derived(profile?.username ?? user?.username)
 	const name = $derived(profile?.name ?? user?.name)
-
-	onMount(() => {
-		theme = localStorage.getItem('theme') || 'dark'
-	})
-
-	function toggleTheme(toggle: () => void) {
-		return () => {
-			toggle()
-			theme = localStorage.getItem('theme') || 'dark'
-		}
-	}
-
-	let theme: string | null = $state(null)
 </script>
 
-<nav class="bg-surface pt-4 text-dim">
+<nav class="bg-surface pt-4 text-dim {className}">
 	<!-- Top -->
 	<div class="flex flex-row items-center justify-between gap-4 px-4 pb-4">
 		<!-- Left -->
 		<div class="flex flex-row items-center gap-4 font-semibold text-main">
-			<a href={resolve('/')}> <BookOpen class="size-6" /> </a>
+			<a href={resolve('/')} aria-label={m.aria_goto_home()}> <BookOpen class="size-6" /> </a>
 			<a href={username ? resolve('/(app)/[username]', { username }) : resolve('/')}>
 				{name || m.app_name()}
 			</a>
@@ -60,15 +60,15 @@
 		<div class="flex flex-row items-center gap-4">
 			<!-- Theme -->
 			{#if theme === 'light'}
-				<button onclick={toggleTheme(toggleDark)}>
+				<button onclick={toggleDark} title={m.nav_toggle_dark()}>
 					<Sun class="size-6 cursor-pointer" />
 				</button>
 			{:else if theme === 'dark'}
-				<button onclick={toggleTheme(toggleLight)}>
+				<button onclick={toggleLight} title={m.nav_toggle_light()}>
 					<Moon class="size-6 cursor-pointer" />
 				</button>
 			{:else}
-				<button>
+				<button title={m.nav_toggle_theme()}>
 					<Spinner class="size-6" />
 				</button>
 			{/if}
