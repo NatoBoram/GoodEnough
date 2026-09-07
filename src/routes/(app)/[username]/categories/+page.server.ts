@@ -2,18 +2,16 @@ import { clamp } from '$lib/maths.js'
 import { db } from '$lib/server/db/db.js'
 import type { Category, DB } from '$lib/server/db/kysely-codegen.js'
 import { isUuid } from '$lib/uuid.js'
-import { error } from '@sveltejs/kit'
 import type { ComparisonOperator, OrderByDirection, SelectQueryBuilder } from 'kysely'
 import { sql } from 'kysely'
 import type { PageServerLoad } from './$types.ts'
 
-export const load: PageServerLoad = (async ({ locals, url }) => {
-	const user = locals.user
-	if (!user) return error(404, 'User not found')
+export const load: PageServerLoad = (async ({ url, parent }) => {
+	const { profile } = await parent()
 
 	const limit = clamp(Number(url.searchParams.get('limit')) || 10, 0, 100)
 
-	const query = db.selectFrom('categories').limit(limit).selectAll().where('user', '=', user.id)
+	const query = db.selectFrom('categories').limit(limit).selectAll().where('user', '=', profile.id)
 	const withSort = setSort(query, url)
 	const withCursor = setCursor(withSort, url)
 
