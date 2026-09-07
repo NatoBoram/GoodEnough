@@ -90,12 +90,18 @@ export default defineConfig(
 
 			// Unsafe assignment of an error typed value.
 			'@typescript-eslint/no-unsafe-assignment': 'off',
-
 			// Unsafe member access on a type that cannot be resolved.
 			'@typescript-eslint/no-unsafe-member-access': 'off',
-
-			// Unsafe argument of type error typed assigned to a parameter of type `string | URL`.
+			// Unsafe argument of type error typed assigned.
 			'@typescript-eslint/no-unsafe-argument': 'off',
+		},
+	},
+
+	{
+		files: ['**/*.test.ts', '**/*.bench.ts'],
+		rules: {
+			// void operator is useless here; it should only discard a call's return value
+			'@typescript-eslint/no-meaningless-void-operator': 'off',
 		},
 	},
 
@@ -112,8 +118,6 @@ export default defineConfig(
 	{
 		files: ['**/*.stories.svelte'],
 		rules: {
-			// Unsafe assignment of an error typed value.
-			'@typescript-eslint/no-unsafe-assignment': 'off',
 			// Unsafe member access .username on a type that cannot be resolved.
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 		},
