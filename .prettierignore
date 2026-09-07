@@ -10,3 +10,9 @@ yarn.lock
 /dist/
 /docs/
 /node_modules/
+
+# inlang
+/project.inlang/.gitignore
+/project.inlang/.meta.json
+/project.inlang/cache/
+/project.inlang/README.md
