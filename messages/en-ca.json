@@ -8,18 +8,28 @@
 	"auth_log_in": "Log in",
 	"auth_log_out": "Log out",
 	"auth_logging_out": "Logging out...",
-	"auth_name": "Name",
 	"auth_password": "Password",
 	"auth_sign_up": "Sign up",
 	"auth_username": "Username",
 
-	"categories_new_title": "Create a category",
-	"categories_new_subtitle": "Categories allow you to group your items and to give them attributes.",
-	"categories_new_name": "Name",
-	"categories_new_description": "Description",
-	"categories_new_description_hint": "Accepts Markdown.",
-	"categories_new_slug": "Slug",
+	"categories_edit_submit": "Save",
+	"categories_edit_title": "Edit {name}",
+
+	"categories_list_search": "Find a category...",
+
 	"categories_new_submit": "Create category",
+	"categories_new_subtitle": "Categories allow you to group your items and to give them attributes.",
+	"categories_new_title": "Create a category",
+
+	"categories_view_edit": "Edit",
+	"categories_view_edited": "Edited on {date}",
+
+	"form_hint_description": "Accepts Markdown.",
+
+	"form_label_description": "Description",
+	"form_label_name": "Name",
+	"form_label_slug": "Slug",
+	"form_label_submit": "Submit",
 
 	"nav_attributes": "Attributes",
 	"nav_categories": "Categories",

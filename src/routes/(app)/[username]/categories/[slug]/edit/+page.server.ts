@@ -6,16 +6,18 @@ import { db } from '$lib/server/db/db.js'
 import { error, fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types.ts'
 
-export const load: PageServerLoad = (({ locals, params }) => {
-	if (locals.user?.username !== params.username) return error(403)
-	return
+export const load: PageServerLoad = (({ params, locals }) => {
+	if (params.username !== locals.user?.username) return error(403, 'Forbidden')
+	return {}
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-	default: async ({ request, locals }) => {
-		if (!locals.user?.username) return fail(403, { message: 'Forbidden' })
+	default: async ({ request, params, locals }) => {
+		if (params.username !== locals.user?.username) return error(403, 'Forbidden')
 
+		// Form
 		const data = await request.formData()
+
 		const name = getFormString(data, 'name')
 		const slug = getFormString(data, 'slug')
 		const description = getFormString(data, 'description')
@@ -25,22 +27,20 @@ export const actions: Actions = {
 
 		if (slug !== encodeURIComponent(slug)) return fail(400, { message: 'Invalid slug' })
 
-		const result = await asyncResult(
+		// Update
+		const updated = await asyncResult(
 			db
-				.insertInto('categories')
-				.values({
-					description,
-					name,
-					slug,
-					user: locals.user.id,
-				})
+				.updateTable('categories')
+				.set({ name, slug, description, updated_at: new Date() })
+				.where('user', '=', locals.user.id)
+				.where('slug', '=', params.slug)
 				.returning(['slug'])
 				.executeTakeFirstOrThrow(),
-			'inserting category',
+			'updating category',
 		)
-		if (!result.ok) {
-			logger.error({ error: result.error }, 'Error inserting category')
-			return fail(500, { message: 'An unexpected error happened while creating the category.' })
+		if (!updated.ok) {
+			logger.error({ error: updated.error }, 'Failed to update category')
+			return fail(500, { message: 'Failed to update category' })
 		}
 
 		return redirect(

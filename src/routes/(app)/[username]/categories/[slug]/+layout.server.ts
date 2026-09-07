@@ -4,9 +4,16 @@ import { db } from '$lib/server/db/db.js'
 import { error } from '@sveltejs/kit'
 import type { LayoutServerLoad } from './$types.ts'
 
-export const load: LayoutServerLoad = (async ({ params }) => {
+export const load: LayoutServerLoad = (async ({ params, parent }) => {
+	const { profile } = await parent()
+
 	const result = await asyncResult(
-		db.selectFrom('categories').selectAll().where('slug', '=', params.slug).executeTakeFirst(),
+		db
+			.selectFrom('categories')
+			.selectAll()
+			.where('slug', '=', params.slug)
+			.where('user', '=', profile.id)
+			.executeTakeFirst(),
 		'loading category',
 	)
 

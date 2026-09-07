@@ -160,13 +160,13 @@
 	--color-aurora-purple-950: color-mix(in oklch, var(--color-nord-15), #000 calc(100%/10 * 5));
 
 	/* Semantic colours */
-	--color-page: light-dark(var(--color-nord-50), var(--color-nord-900));
-	--color-surface: light-dark(var(--color-nord-100), var(--color-nord-950));
-	--color-container: light-dark(var(--color-nord-200), var(--color-nord-900));
+	--color-page: light-dark(var(--color-nord-50), var(--color-nord-950));
+	--color-surface: light-dark(var(--color-nord-100), var(--color-nord-900));
+	--color-container: light-dark(var(--color-nord-200), var(--color-nord-800));
 
 	--color-main: light-dark(var(--color-nord-950), var(--color-nord-50));
 	--color-dim: light-dark(var(--color-nord-500), var(--color-nord-300));
-	--color-disabled: light-dark(var(--color-nord-800), var(--color-nord-200));
+	--color-disabled: light-dark(var(--color-nord-400), var(--color-nord-400));
 
 	--color-accent: var(--color-water-500);
 	--color-primary: var(--color-ice-500);

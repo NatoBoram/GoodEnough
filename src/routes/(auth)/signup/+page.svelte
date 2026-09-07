@@ -16,7 +16,7 @@
 	<BookOpen class="size-6 self-center" />
 	<h1 class="mb-4 self-center text-lg font-semibold">{m.auth_sign_up()}</h1>
 
-	<label for="name" class="mb-1 text-sm font-semibold"> {m.auth_name()} </label>
+	<label for="name" class="mb-1 text-sm font-semibold"> {m.form_label_name()} </label>
 	<input type="text" name="name" required class="mb-4 bg-container" />
 
 	<label for="email" class="mb-1 text-sm font-semibold"> {m.auth_email()} </label>

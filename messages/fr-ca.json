@@ -8,23 +8,33 @@
 	"auth_log_in": "Se connecter",
 	"auth_log_out": "Se déconnecter",
 	"auth_logging_out": "Déconnexion en cours...",
-	"auth_name": "Nom",
 	"auth_password": "Mot de passe",
 	"auth_sign_up": "S'inscrire",
 	"auth_username": "Nom d'utilisateur",
 
-	"categories_new_title": "Créer une catégorie",
+	"categories_edit_submit": "Modifier",
+	"categories_edit_title": "Modifier {name}",
+
+	"categories_list_search": "Chercher une catégorie...",
+
+	"categories_new_submit": "Créer",
 	"categories_new_subtitle": "Les catégories vous permettent d'organiser vos items et de leur assigner des attributs.",
-	"categories_new_name": "Nom",
-	"categories_new_description": "Description",
-	"categories_new_description_hint": "Accepte le Markdown.",
-	"categories_new_slug": "Identifiant",
-	"categories_new_submit": "Créer la catégorie",
+	"categories_new_title": "Créer une catégorie",
+
+	"categories_view_edit": "Modifier",
+	"categories_view_edited": "Modifié le {date}",
+
+	"form_hint_description": "Accepte le Markdown.",
+
+	"form_label_description": "Description",
+	"form_label_name": "Nom",
+	"form_label_slug": "Identifiant",
+	"form_label_submit": "Sauvegarder",
 
 	"nav_attributes": "Attributs",
 	"nav_categories": "Catégories",
 	"nav_items": "Items",
 	"nav_toggle_dark": "Activer le mode sombre",
 	"nav_toggle_light": "Activer le mode clair",
-	"nav_toggle_theme": "Changer de thème"
+	"nav_toggle_theme": "Chargement du thème..."
 }

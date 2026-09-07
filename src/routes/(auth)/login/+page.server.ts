@@ -12,9 +12,9 @@ export const load: PageServerLoad = (({ locals }) => {
 
 export const actions: Actions = {
 	login: async ({ request }) => {
-		const formData = await request.formData()
-		const email = getFormString(formData, 'email')
-		const password = getFormString(formData, 'password')
+		const data = await request.formData()
+		const email = getFormString(data, 'email')
+		const password = getFormString(data, 'password')
 
 		const signInEmail = await asyncResult(
 			auth.api.signInEmail({

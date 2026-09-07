@@ -95,6 +95,8 @@ export default defineConfig(
 		rules: {
 			// Unsafe call of a type that could not be resolved.
 			'@typescript-eslint/no-unsafe-call': 'off',
+			// Unsafe assignment of an `any` value.
+			'@typescript-eslint/no-unsafe-assignment': 'off',
 		},
 	},
 

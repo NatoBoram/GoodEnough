@@ -11,19 +11,25 @@ export const load: PageServerLoad = (({ locals }) => {
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-	signup: async event => {
-		const formData = await event.request.formData()
-		const email = getFormString(formData, 'email')
-		const password = getFormString(formData, 'password')
-		const name = getFormString(formData, 'name')
-		const username = getFormString(formData, 'username')
+	signup: async ({ request }) => {
+		const data = await request.formData()
+
+		const email = getFormString(data, 'email')
+		const password = getFormString(data, 'password')
+		const name = getFormString(data, 'name')
+		const username = getFormString(data, 'username')
+
+		if (!email) return fail(400, { message: 'Email is required' })
+		if (!password) return fail(400, { message: 'Password is required' })
+		if (!name) return fail(400, { message: 'Name is required' })
+		if (!username) return fail(400, { message: 'Username is required' })
 
 		const signUpEmail = await asyncResult(
 			auth.api.signUpEmail({
 				// @ts-expect-error Object literal may only specify known properties and `username` does not
 				// exist
 				body: { email, password, name, username, callbackURL: '/auth/verification-success' },
-				headers: event.request.headers,
+				headers: request.headers,
 			}),
 			'signing up',
 			APIError,

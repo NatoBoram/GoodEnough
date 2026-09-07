@@ -27,6 +27,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('type', sql`attribute_type`, col => col.notNull())
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
+		.addUniqueConstraint('attributes_user_slug_unique', ['user', 'slug'])
 		.execute()
 
 	// Category-attribute relationships define which attributes are applicable to which categories.
@@ -52,6 +53,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
 		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
+		.addUniqueConstraint('items_user_slug_unique', ['user', 'slug'])
 		.execute()
 
 	// Reviews are made by a user about an item
