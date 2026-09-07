@@ -15,6 +15,8 @@ const dirname =
 
 /** @see https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon */
 const config: ReturnType<typeof defineConfig> = defineConfig({
+	optimizeDeps: { include: ['@natoboram/heroicons.svelte'] },
+
 	plugins: [
 		tailwindcss(),
 		sveltekit({
