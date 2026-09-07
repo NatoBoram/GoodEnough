@@ -1,17 +1,18 @@
 import { logger } from '$lib/logger.js'
 import { asyncResult } from '$lib/result.js'
 import { auth } from '../auth.ts'
-import { ADMIN_EMAIL, ADMIN_PASSWORD } from '../env.ts'
+import { ADMIN_EMAIL, ADMIN_PASSWORD, BETTER_AUTH_URL } from '../env.ts'
 import { db } from './db.ts'
 
 export async function seedAdmin(): Promise<void> {
-	if (!ADMIN_EMAIL || !ADMIN_PASSWORD) return
+	const email = ADMIN_EMAIL || `admin@${new URL(BETTER_AUTH_URL).hostname}`
+	const password = ADMIN_PASSWORD || crypto.randomUUID()
 
 	const selected = await asyncResult(
 		db
 			.selectFrom('users')
 			.select(['id', 'role', 'name'])
-			.where('email', '=', ADMIN_EMAIL)
+			.where('email', '=', email)
 			.executeTakeFirst(),
 		'selecting admin user',
 	)
@@ -44,9 +45,9 @@ export async function seedAdmin(): Promise<void> {
 		auth.api.createUser({
 			body: {
 				data: { username: 'admin' },
-				email: ADMIN_EMAIL,
+				email,
 				name: 'Admin',
-				password: ADMIN_PASSWORD,
+				password,
 				role: 'admin',
 			},
 		}),
@@ -57,5 +58,12 @@ export async function seedAdmin(): Promise<void> {
 		return
 	}
 
-	logger.info({ user: created.value.user }, 'Seeded admin user')
+	logger.info(
+		{
+			...(ADMIN_EMAIL ? {} : { email }),
+			...(ADMIN_PASSWORD ? {} : { password }),
+			user: created.value.user,
+		},
+		'Seeded admin user',
+	)
 }

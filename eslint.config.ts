@@ -87,6 +87,15 @@ export default defineConfig(
 			'@typescript-eslint/sort-type-constituents': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'func-style': ['error', 'declaration'],
+
+			// Unsafe assignment of an error typed value.
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+
+			// Unsafe member access on a type that cannot be resolved.
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+
+			// Unsafe argument of type error typed assigned to a parameter of type `string | URL`.
+			'@typescript-eslint/no-unsafe-argument': 'off',
 		},
 	},
 

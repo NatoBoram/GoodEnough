@@ -1,12 +1,14 @@
 node_modules
 
 # Output
+.netlify
 .output
 .vercel
-.netlify
 .wrangler
 /.svelte-kit
 /build
+/deploy
+natoboram-goodenough-*.tgz
 
 # OS
 .DS_Store
