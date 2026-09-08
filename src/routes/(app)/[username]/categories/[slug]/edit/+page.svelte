@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
+	import { maxDescription, maxName, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
 
@@ -18,6 +19,8 @@
 		required
 		class="mb-4 bg-container"
 		value={data.category.name}
+		maxlength={maxName}
+		minlength={1}
 	/>
 
 	<!-- Slug -->
@@ -29,6 +32,19 @@
 		required
 		class="mb-4 bg-container"
 		value={data.category.slug}
+		maxlength={maxName}
+		minlength={1}
+	/>
+
+	<!-- Summary -->
+	<label for="summary" class="mb-1 text-sm font-semibold"> {m.form_label_summary()} </label>
+	<input
+		id="summary"
+		name="summary"
+		type="text"
+		class="mb-4 bg-container"
+		maxlength={maxSummary}
+		value={data.category.summary}
 	/>
 
 	<!-- Description -->
@@ -38,9 +54,9 @@
 	<textarea
 		id="description"
 		name="description"
-		required
 		class="mb-1 h-100 bg-container"
-		value={data.category.description}></textarea>
+		value={data.category.description}
+		maxlength={maxDescription}></textarea>
 	<label for="description" class="mb-4 self-end text-xs text-dim">
 		{m.form_hint_description()}
 	</label>

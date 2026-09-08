@@ -1,20 +1,48 @@
 import type { Kysely } from 'kysely'
 import { sql } from 'kysely'
 
+/** 2^6 */
+const maxName = 64
+/** 2^6 */
+const maxSlug = 64
+/** 2^7 */
+const maxSummary = 128
+/** 2^17 */
+const maxDescription = 131_072
+/** 2^11 */
+const maxImage = 2_048
+
 export async function up(db: Kysely<unknown>): Promise<void> {
 	// Categories belong to a user, are described by attributes and contain items.
 	await db.schema
 		.createTable('categories')
 		.addColumn('id', 'uuid', col => col.primaryKey().defaultTo(sql`uuidv7()`))
 		.addColumn('name', 'text', col => col.notNull())
+		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('summary', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('description', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('image', 'text')
-		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
 		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addUniqueConstraint('categories_user_slug_unique', ['user', 'slug'])
+		.addCheckConstraint(
+			'categories_name_length',
+			sql`char_length(trim(name)) >= 1 and char_length(name) <= ${sql.lit(maxName)}`,
+		)
+		.addCheckConstraint(
+			'categories_slug_length',
+			sql`char_length(trim(slug)) >= 1 and char_length(slug) <= ${sql.lit(maxSlug)}`,
+		)
+		.addCheckConstraint(
+			'categories_summary_length',
+			sql`char_length(summary) <= ${sql.lit(maxSummary)}`,
+		)
+		.addCheckConstraint(
+			'categories_description_length',
+			sql`char_length(description) <= ${sql.lit(maxDescription)}`,
+		)
+		.addCheckConstraint('categories_image_length', sql`char_length(image) <= ${sql.lit(maxImage)}`)
 		.execute()
 
 	// Attributes have a type.
@@ -25,13 +53,25 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.createTable('attributes')
 		.addColumn('id', 'uuid', col => col.primaryKey().defaultTo(sql`uuidv7()`))
 		.addColumn('name', 'text', col => col.notNull())
-		.addColumn('summary', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('slug', 'text', col => col.notNull())
+		.addColumn('summary', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('type', sql`attribute_type`, col => col.notNull())
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
 		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addUniqueConstraint('attributes_user_slug_unique', ['user', 'slug'])
+		.addCheckConstraint(
+			'attributes_name_length',
+			sql`char_length(trim(name)) >= 1 and char_length(name) <= ${sql.lit(maxName)}`,
+		)
+		.addCheckConstraint(
+			'attributes_slug_length',
+			sql`char_length(trim(slug)) >= 1 and char_length(slug) <= ${sql.lit(maxSlug)}`,
+		)
+		.addCheckConstraint(
+			'attributes_summary_length',
+			sql`char_length(summary) <= ${sql.lit(maxSummary)}`,
+		)
 		.execute()
 
 	// Category-attribute relationships define which attributes are applicable to which categories.
@@ -51,14 +91,28 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.createTable('items')
 		.addColumn('id', 'uuid', col => col.primaryKey().defaultTo(sql`uuidv7()`))
 		.addColumn('name', 'text', col => col.notNull())
+		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('summary', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('description', 'text', col => col.notNull().defaultTo(''))
-		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('image', 'text')
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
 		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addUniqueConstraint('items_user_slug_unique', ['user', 'slug'])
+		.addCheckConstraint(
+			'items_name_length',
+			sql`char_length(trim(name)) >= 1 and char_length(name) <= ${sql.lit(maxName)}`,
+		)
+		.addCheckConstraint(
+			'items_slug_length',
+			sql`char_length(trim(slug)) >= 1 and char_length(slug) <= ${sql.lit(maxSlug)}`,
+		)
+		.addCheckConstraint('items_summary_length', sql`char_length(summary) <= ${sql.lit(maxSummary)}`)
+		.addCheckConstraint(
+			'items_description_length',
+			sql`char_length(description) <= ${sql.lit(maxDescription)}`,
+		)
+		.addCheckConstraint('items_image_length', sql`char_length(image) <= ${sql.lit(maxImage)}`)
 		.execute()
 
 	// Reviews are made by a user about an item
@@ -71,8 +125,12 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn('comment', 'text', col => col.notNull().defaultTo(''))
 		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
-		.addCheckConstraint('reviews_rating_range', sql`rating >= 1 and rating <= 10`)
 		.addUniqueConstraint('reviews_user_item_unique', ['user', 'item'])
+		.addCheckConstraint('reviews_rating_range', sql`rating >= 1 and rating <= 10`)
+		.addCheckConstraint(
+			'reviews_comment_length',
+			sql`char_length(comment) <= ${sql.lit(maxDescription)}`,
+		)
 		.execute()
 
 	// Category items link items to categories. While categories and items belong to a user, a user

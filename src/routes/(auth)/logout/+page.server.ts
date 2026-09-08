@@ -1,6 +1,6 @@
-import { logger } from '$lib/logger.js'
 import { asyncResult } from '$lib/result.js'
 import { auth } from '$lib/server/auth.js'
+import { logger } from '$lib/server/logger.js'
 import { fail, redirect } from '@sveltejs/kit'
 import { APIError } from 'better-auth'
 import type { Actions, PageServerLoad } from './$types.ts'

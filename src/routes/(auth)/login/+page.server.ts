@@ -1,6 +1,6 @@
-import { getFormString } from '$lib/forms.js'
 import { asyncResult } from '$lib/result.js'
 import { auth } from '$lib/server/auth.js'
+import { getFormString } from '$lib/server/forms.js'
 import { fail, redirect } from '@sveltejs/kit'
 import { APIError } from 'better-auth/api'
 import type { Actions, PageServerLoad } from './$types.ts'

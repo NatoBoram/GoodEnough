@@ -1,5 +1,5 @@
-import { logger } from '$lib/logger.js'
 import { asyncResult } from '$lib/result.js'
+import { logger } from '$lib/server/logger.js'
 import { auth } from '../auth.ts'
 import { ADMIN_EMAIL, ADMIN_PASSWORD, BETTER_AUTH_URL } from '../env.ts'
 import { db } from './db.ts'

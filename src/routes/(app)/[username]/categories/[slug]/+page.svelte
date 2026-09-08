@@ -18,6 +18,8 @@
 <main class="container mx-auto flex flex-col gap-4">
 	<h1 class="text-lg font-bold">{data.category.name}</h1>
 
+	<p>{data.category.summary}</p>
+
 	<p class="prose text-main prose-strong:text-main">{@html data.description}</p>
 
 	{#if data.category.created_at.getTime() !== data.category.updated_at.getTime()}

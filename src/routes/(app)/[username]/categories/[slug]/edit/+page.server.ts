@@ -1,8 +1,8 @@
 import { resolve } from '$app/paths'
-import { getFormString } from '$lib/forms.js'
-import { logger } from '$lib/logger.js'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
+import { getFormString } from '$lib/server/forms.js'
+import { logger } from '$lib/server/logger.js'
 import { error, fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types.ts'
 
@@ -20,6 +20,7 @@ export const actions: Actions = {
 
 		const name = getFormString(data, 'name')
 		const slug = getFormString(data, 'slug')
+		const summary = getFormString(data, 'summary')
 		const description = getFormString(data, 'description')
 
 		if (!name) return fail(400, { message: 'Name is required' })
@@ -31,7 +32,7 @@ export const actions: Actions = {
 		const updated = await asyncResult(
 			db
 				.updateTable('categories')
-				.set({ name, slug, description, updated_at: new Date() })
+				.set({ name, slug, summary, description, updated_at: new Date() })
 				.where('user', '=', locals.user.id)
 				.where('slug', '=', params.slug)
 				.returning(['slug'])

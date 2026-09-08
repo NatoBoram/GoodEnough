@@ -1,6 +1,6 @@
-import { logger } from '$lib/logger.js'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
+import { logger } from '$lib/server/logger.js'
 import { error } from '@sveltejs/kit'
 import type { LayoutServerLoad } from './$types.ts'
 

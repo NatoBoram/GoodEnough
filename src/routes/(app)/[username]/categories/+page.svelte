@@ -34,7 +34,7 @@
 			>
 				<h2 class="font-semibold">{category.name}</h2>
 			</a>
-			<p class="prose text-main">{category.description}</p>
+			<p class="prose text-main">{category.summary}</p>
 		</div>
 	{/each}
 </div>

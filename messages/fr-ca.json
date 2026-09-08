@@ -12,6 +12,9 @@
 	"auth_sign_up": "S'inscrire",
 	"auth_username": "Nom d'utilisateur",
 
+	"attributes_list_search": "Trouver un attribut...",
+	"attributes_list_new": "Créer",
+
 	"categories_edit_submit": "Modifier",
 	"categories_edit_title": "Modifier {name}",
 
@@ -31,6 +34,7 @@
 	"form_label_name": "Nom",
 	"form_label_slug": "Identifiant",
 	"form_label_submit": "Sauvegarder",
+	"form_label_summary": "Résumé",
 
 	"nav_attributes": "Attributs",
 	"nav_categories": "Catégories",
