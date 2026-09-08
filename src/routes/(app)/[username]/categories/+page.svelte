@@ -8,12 +8,20 @@
 
 <div class="container mx-auto mt-4 flex flex-col gap-4">
 	<!-- Search bar -->
-	<form method="GET">
+	<form method="GET" class="flex flex-row items-center gap-4">
 		<input
 			type="text"
 			placeholder={m.categories_list_search()}
-			class="w-full rounded border border-container bg-page p-2"
+			class="flex-1 rounded border border-container bg-page px-3 py-2"
 		/>
+		{#if data.profile.id === data.user?.id}
+			<a
+				class="rounded bg-success px-3 py-2"
+				href={resolve('/(app)/[username]/categories/new', { username: params.username })}
+			>
+				{m.categories_list_new()}
+			</a>
+		{/if}
 	</form>
 
 	{#each data.categories as category (category.id)}

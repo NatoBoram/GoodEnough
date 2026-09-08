@@ -5,22 +5,27 @@
 	import type { PageProps } from './$types.ts'
 
 	const { data, params }: PageProps = $props()
+
+	const format = Intl.DateTimeFormat(getLocale(), {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+	})
 </script>
 
 <main class="container mx-auto flex flex-col gap-4">
 	<h1 class="text-lg font-bold">{data.category.name}</h1>
-	<p class="prose text-main">{data.category.description}</p>
-	<p class="text-sm text-dim italic">
-		{m.categories_view_edited({
-			date: Intl.DateTimeFormat(getLocale(), {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric',
-				hour: 'numeric',
-				minute: 'numeric',
-			}).format(data.category.updated_at),
-		})}
-	</p>
+
+	<p class="prose text-main prose-strong:text-main">{@html data.description}</p>
+
+	{#if data.category.created_at.getTime() !== data.category.updated_at.getTime()}
+		<p class="text-sm text-dim italic">
+			{m.categories_view_edited({ date: format.format(data.category.updated_at) })}
+		</p>
+	{/if}
+
 	<a
 		href={resolve('/(app)/[username]/categories/[slug]/edit', {
 			slug: params.slug,

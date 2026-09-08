@@ -1,4 +1,3 @@
-import { building } from '$app/environment'
 import {
 	envEnum,
 	envInt,
@@ -9,8 +8,9 @@ import {
 	maybeSecretString,
 } from '@natoboram/load_env'
 import { asyncResult } from '../result.ts'
+import { building } from './environment.ts'
 
-const loaded = await asyncResult(loadEnv(), 'loading environment variables')
+const loaded = await asyncResult(loadEnv({ override: building }), 'loading environment variables')
 if (!loaded.ok) {
 	throw new Error('Failed to load environment variables', { cause: loaded.error })
 }

@@ -16,6 +16,7 @@
 	"categories_edit_title": "Edit {name}",
 
 	"categories_list_search": "Find a category...",
+	"categories_list_new": "Create",
 
 	"categories_new_submit": "Create category",
 	"categories_new_subtitle": "Categories allow you to group your items and to give them attributes.",

@@ -34,10 +34,12 @@ export interface Account {
 }
 
 export interface Attribute {
+	created_at: Generated<Timestamp>
 	id: Generated<string>
 	name: string
 	slug: string
 	type: AttributeType
+	updated_at: Generated<Timestamp>
 	user: string
 }
 

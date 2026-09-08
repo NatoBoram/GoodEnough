@@ -112,6 +112,8 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-call': 'off',
 			// Unsafe assignment of an `any` value.
 			'@typescript-eslint/no-unsafe-assignment': 'off',
+			// `{@html}` can lead to XSS attack.
+			'svelte/no-at-html-tags': 'off',
 		},
 	},
 

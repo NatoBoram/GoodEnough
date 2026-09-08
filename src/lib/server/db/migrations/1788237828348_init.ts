@@ -27,6 +27,8 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn('slug', 'text', col => col.notNull())
 		.addColumn('type', sql`attribute_type`, col => col.notNull())
 		.addColumn('user', 'uuid', col => col.notNull().references('users.id').onDelete('cascade'))
+		.addColumn('created_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
+		.addColumn('updated_at', 'timestamptz', col => col.notNull().defaultTo(sql`current_timestamp`))
 		.addUniqueConstraint('attributes_user_slug_unique', ['user', 'slug'])
 		.execute()
 

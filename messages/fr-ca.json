@@ -16,6 +16,7 @@
 	"categories_edit_title": "Modifier {name}",
 
 	"categories_list_search": "Chercher une catégorie...",
+	"categories_list_new": "Créer",
 
 	"categories_new_submit": "Créer",
 	"categories_new_subtitle": "Les catégories vous permettent d'organiser vos items et de leur assigner des attributs.",
