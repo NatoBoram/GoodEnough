@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { maxDescription, maxName, maxSummary } from '$lib/forms.js'
+	import { maxDescription, maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
 
@@ -32,7 +32,7 @@
 		required
 		class="mb-4 bg-container"
 		value={data.category.slug}
-		maxlength={maxName}
+		maxlength={maxSlug}
 		minlength={1}
 	/>
 
