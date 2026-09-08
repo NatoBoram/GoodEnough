@@ -38,6 +38,7 @@ export interface Attribute {
 	id: Generated<string>
 	name: string
 	slug: string
+	summary: Generated<string>
 	type: AttributeType
 	updated_at: Generated<Timestamp>
 	user: string
@@ -59,6 +60,7 @@ export interface Category {
 	image: string | null
 	name: string
 	slug: string
+	summary: Generated<string>
 	updated_at: Generated<Timestamp>
 	user: string
 }
@@ -80,6 +82,7 @@ export interface Item {
 	image: string | null
 	name: string
 	slug: string
+	summary: Generated<string>
 	updated_at: Generated<Timestamp>
 	user: string
 }
