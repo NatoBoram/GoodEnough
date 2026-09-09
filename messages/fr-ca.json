@@ -1,8 +1,26 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
+
 	"app_name": "GoodEnough",
 
 	"aria_goto_home": "Aller à l'accueil",
+
+	"attributes_edit_title": "Modifier {name}",
+	"attributes_edit_submit": "Sauvegarder",
+
+	"attributes_list_new": "Créer",
+	"attributes_list_search": "Trouver un attribut...",
+
+	"attributes_new_submit": "Créer l'attribut",
+	"attributes_new_subtitle": "Les attributs vous permettent de définir des caractéristiques pour vos articles.",
+	"attributes_new_title": "Créer un attribut",
+	"attributes_new_type_boolean": "Booléen",
+	"attributes_new_type_number": "Nombre",
+	"attributes_new_type_text": "Texte",
+	"attributes_new_type": "Type",
+
+	"attributes_view_edit": "Modifier",
+	"attributes_view_edited": "Modifié le {date}",
 
 	"auth_email": "Email",
 	"auth_log_in": "Se connecter",
@@ -12,14 +30,11 @@
 	"auth_sign_up": "S'inscrire",
 	"auth_username": "Nom d'utilisateur",
 
-	"attributes_list_search": "Trouver un attribut...",
-	"attributes_list_new": "Créer",
-
-	"categories_edit_submit": "Modifier",
+	"categories_edit_submit": "Sauvegarder",
 	"categories_edit_title": "Modifier {name}",
 
-	"categories_list_search": "Chercher une catégorie...",
 	"categories_list_new": "Créer",
+	"categories_list_search": "Chercher une catégorie...",
 
 	"categories_new_submit": "Créer",
 	"categories_new_subtitle": "Les catégories vous permettent d'organiser vos items et de leur assigner des attributs.",
@@ -35,6 +50,19 @@
 	"form_label_slug": "Identifiant",
 	"form_label_submit": "Sauvegarder",
 	"form_label_summary": "Résumé",
+
+	"items_edit_submit": "Sauvegarder",
+	"items_edit_title": "Modifier {name}",
+
+	"items_list_new": "Créer",
+	"items_list_search": "Trouver un item...",
+
+	"items_new_submit": "Créer un item",
+	"items_new_subtitle": "Les items représentent tout ce que vous pourriez vouloir évaluer.",
+	"items_new_title": "Créer un item",
+
+	"items_view_edit": "Modifier",
+	"items_view_edited": "Modifié le {date}",
 
 	"nav_attributes": "Attributs",
 	"nav_categories": "Catégories",

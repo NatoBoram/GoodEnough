@@ -4,9 +4,16 @@ import { logger } from '$lib/server/logger.js'
 import { error } from '@sveltejs/kit'
 import type { LayoutServerLoad } from './$types.ts'
 
-export const load: LayoutServerLoad = (async ({ params }) => {
+export const load: LayoutServerLoad = (async ({ params, parent }) => {
+	const { profile } = await parent()
+
 	const result = await asyncResult(
-		db.selectFrom('items').selectAll().where('slug', '=', params.slug).executeTakeFirst(),
+		db
+			.selectFrom('items')
+			.selectAll()
+			.where('slug', '=', params.slug)
+			.where('user', '=', profile.id)
+			.executeTakeFirst(),
 		'loading item',
 	)
 
@@ -16,7 +23,7 @@ export const load: LayoutServerLoad = (async ({ params }) => {
 	}
 
 	const item = result.value
-	if (!item) return error(404, 'Item not found')
+	if (!item) return error(404, 'item not found')
 
 	return { item }
 }) satisfies LayoutServerLoad

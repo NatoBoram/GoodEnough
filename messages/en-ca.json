@@ -1,8 +1,26 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
+
 	"app_name": "GoodEnough",
 
 	"aria_goto_home": "Go to the home page",
+
+	"attributes_edit_title": "Edit {name}",
+	"attributes_edit_submit": "Save",
+
+	"attributes_list_new": "Create",
+	"attributes_list_search": "Find an attribute...",
+
+	"attributes_new_submit": "Create attribute",
+	"attributes_new_subtitle": "Attributes allow you to define specific characteristics for your items.",
+	"attributes_new_title": "Create an attribute",
+	"attributes_new_type_boolean": "Boolean",
+	"attributes_new_type_number": "Number",
+	"attributes_new_type_text": "Text",
+	"attributes_new_type": "Type",
+
+	"attributes_view_edit": "Edit",
+	"attributes_view_edited": "Edited on {date}",
 
 	"auth_email": "Email",
 	"auth_log_in": "Log in",
@@ -12,14 +30,11 @@
 	"auth_sign_up": "Sign up",
 	"auth_username": "Username",
 
-	"attributes_list_search": "Find an attribute...",
-	"attributes_list_new": "Create",
-
 	"categories_edit_submit": "Save",
 	"categories_edit_title": "Edit {name}",
 
-	"categories_list_search": "Find a category...",
 	"categories_list_new": "Create",
+	"categories_list_search": "Find a category...",
 
 	"categories_new_submit": "Create category",
 	"categories_new_subtitle": "Categories allow you to group your items and to give them attributes.",
@@ -35,6 +50,19 @@
 	"form_label_slug": "Slug",
 	"form_label_submit": "Submit",
 	"form_label_summary": "Summary",
+
+	"items_edit_submit": "Save",
+	"items_edit_title": "Edit {name}",
+
+	"items_list_new": "Create",
+	"items_list_search": "Find an item...",
+
+	"items_new_submit": "Create item",
+	"items_new_subtitle": "Items represent anything you may want to review.",
+	"items_new_title": "Create an item",
+
+	"items_view_edit": "Edit",
+	"items_view_edited": "Edited on {date}",
 
 	"nav_attributes": "Attributes",
 	"nav_categories": "Categories",

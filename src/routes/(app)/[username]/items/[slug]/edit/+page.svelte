@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { maxName, maxSlug, maxSummary } from '$lib/forms.js'
+	import { maxDescription, maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
 
@@ -8,7 +8,7 @@
 </script>
 
 <form action="?" class="container mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance>
-	<h1 class="mb-1 text-xl">{m.attributes_edit_title({ name: data.attribute.name })}</h1>
+	<h1 class="mb-1 text-xl">{m.items_edit_title({ name: data.item.name })}</h1>
 
 	<!-- Name -->
 	<label for="name" class="mb-1 text-sm font-semibold"> {m.form_label_name()} </label>
@@ -18,7 +18,7 @@
 		type="text"
 		required
 		class="mb-4 bg-container"
-		value={data.attribute.name}
+		value={data.item.name}
 		maxlength={maxName}
 		minlength={1}
 	/>
@@ -31,7 +31,7 @@
 		type="text"
 		required
 		class="mb-4 bg-container"
-		value={data.attribute.slug}
+		value={data.item.slug}
 		maxlength={maxSlug}
 		minlength={1}
 	/>
@@ -44,19 +44,25 @@
 		type="text"
 		class="mb-4 bg-container"
 		maxlength={maxSummary}
-		value={data.attribute.summary}
+		value={data.item.summary}
 	/>
 
-	<!-- Type -->
-	<label for="type" class="mb-1 text-sm font-semibold"> {m.attributes_new_type()} </label>
-	<select id="type" name="type" class="mb-4 bg-container" required>
-		<option value="boolean">{m.attributes_new_type_boolean()}</option>
-		<option value="number">{m.attributes_new_type_number()}</option>
-		<option value="text">{m.attributes_new_type_text()}</option>
-	</select>
+	<!-- Description -->
+	<label for="description" class="mb-1 text-sm font-semibold">
+		{m.form_label_description()}
+	</label>
+	<textarea
+		id="description"
+		name="description"
+		class="mb-1 h-100 bg-container"
+		value={data.item.description}
+		maxlength={maxDescription}></textarea>
+	<label for="description" class="mb-4 self-end text-xs text-dim">
+		{m.form_hint_description()}
+	</label>
 
 	<button type="submit" class="mb-4 self-end rounded bg-success p-2">
-		{m.attributes_edit_submit()}
+		{m.items_edit_submit()}
 	</button>
 
 	{#if form?.message}

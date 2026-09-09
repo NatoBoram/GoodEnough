@@ -34,6 +34,7 @@
 			>
 				<h2 class="font-semibold">{attribute.name}</h2>
 			</a>
+			<p class="prose text-main">{attribute.summary}</p>
 		</div>
 	{/each}
 </div>
