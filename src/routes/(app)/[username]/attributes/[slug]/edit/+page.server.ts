@@ -1,5 +1,4 @@
 import { resolve } from '$app/paths'
-import { isAttributeType } from '$lib/forms.ts'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
 import { getFormString } from '$lib/server/forms.js'
@@ -22,14 +21,14 @@ export const actions: Actions = {
 		const name = getFormString(data, 'name')
 		const slug = getFormString(data, 'slug')
 		const summary = getFormString(data, 'summary')
-		const type = getFormString(data, 'type')
+		// const type = getFormString(data, 'type') // Note: Should we really allow modifying an attribute's type?
 
 		if (!name) return fail(400, { message: 'Name is required' })
 		if (!slug) return fail(400, { message: 'Slug is required' })
-		if (!type) return fail(400, { message: 'Type is required' })
+		// if (!type) return fail(400, { message: 'Type is required' })
 
 		if (slug !== encodeURIComponent(slug)) return fail(400, { message: 'Invalid slug' })
-		if (!isAttributeType(type)) return fail(400, { message: 'Invalid type' })
+		// if (!isAttributeType(type)) return fail(400, { message: 'Invalid type' })
 
 		// Update
 		const updated = await asyncResult(

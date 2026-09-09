@@ -48,11 +48,19 @@
 	/>
 
 	<!-- Type -->
-	<label for="type" class="mb-1 text-sm font-semibold"> {m.attributes_new_type()} </label>
-	<select id="type" name="type" class="mb-4 bg-container" required>
-		<option value="boolean">{m.attributes_new_type_boolean()}</option>
-		<option value="number">{m.attributes_new_type_number()}</option>
-		<option value="text">{m.attributes_new_type_text()}</option>
+	<label for="type" class="mb-1 text-sm font-semibold text-disabled">
+		{m.attributes_new_type()}
+	</label>
+	<select id="type" name="type" class="mb-4 bg-surface text-disabled" required disabled>
+		<option selected={data.attribute.type === 'boolean'} value="boolean">
+			{m.attributes_new_type_boolean()}
+		</option>
+		<option selected={data.attribute.type === 'number'} value="number">
+			{m.attributes_new_type_number()}
+		</option>
+		<option selected={data.attribute.type === 'text'} value="text">
+			{m.attributes_new_type_text()}
+		</option>
 	</select>
 
 	<button type="submit" class="mb-4 self-end rounded bg-success p-2">
