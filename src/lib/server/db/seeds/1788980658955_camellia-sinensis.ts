@@ -409,6 +409,66 @@ A must for any fan of black tea.`,
 				attribute: cultivar.id,
 				value_text: 'Assamica clonal TV4 & TV22',
 			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: producer.id,
+				value_text: 'Mr. Dibjyoti Mahanta',
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: altitude.id,
+				value_number: 300,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: date_of_harvest.id,
+				value_date: '2025-07-22',
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: certified_by.id,
+				value_text: 'Ecocert Canada',
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: caffeine.id,
+				value_number: 22,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: antioxidants.id,
+				value_number: 650,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: earthy.id,
+				value_number: 0,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: floral.id,
+				value_number: 0,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: fruity.id,
+				value_number: 1,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: spice.id,
+				value_number: 0,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: vegetal.id,
+				value_number: 0,
+			},
+			{
+				item: assam_breakfast_organic.id,
+				attribute: woody.id,
+				value_number: 2,
+			},
 		])
 		.execute()
 }

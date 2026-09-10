@@ -5,7 +5,7 @@
 
 import type { ColumnType } from 'kysely'
 
-export type AttributeType = 'boolean' | 'number' | 'text'
+export type AttributeType = 'boolean' | 'date' | 'number' | 'text'
 
 export type Generated<T> =
 	T extends ColumnType<infer S, infer I, infer U>
@@ -49,6 +49,7 @@ export interface AttributeValue {
 	id: Generated<string>
 	item: string
 	value_boolean: boolean | null
+	value_date: Timestamp | null
 	value_number: Numeric | null
 	value_text: string | null
 }

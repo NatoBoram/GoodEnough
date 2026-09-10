@@ -68,7 +68,7 @@
 		"db:seed:make": "kysely seed make",
 		"db:seed:run": "kysely seed run",
 		"db:reset": "docker compose down; docker volume rm goodenough_goodenough-postgres",
-		"db:regenerate": "pnpm run db:reset && pnpm run db:start && sleep 10 && pnpm run db:migrate && pnpm run db:generate && pnpm run dev",
+		"db:regenerate": "pnpm run db:reset && pnpm run db:start && sleep 11 && pnpm run db:migrate && pnpm run db:generate && pnpm run dev",
 		"auth:schema": "auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.sql --adapter kysely --dialect postgresql --yes",
 		"sync": "svelte-kit sync"
 	},

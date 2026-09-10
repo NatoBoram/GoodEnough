@@ -46,7 +46,10 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.execute()
 
 	// Attributes have a type.
-	await db.schema.createType('attribute_type').asEnum(['text', 'number', 'boolean']).execute()
+	await db.schema
+		.createType('attribute_type')
+		.asEnum(['text', 'number', 'boolean', 'date'])
+		.execute()
 
 	// Attributes belong to a user, describe categories and are fulfilled by items.
 	await db.schema
@@ -155,6 +158,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 		.addColumn('value_text', 'text', col => col)
 		.addColumn('value_number', 'numeric', col => col)
 		.addColumn('value_boolean', 'boolean', col => col)
+		.addColumn('value_date', 'date', col => col)
 		.addUniqueConstraint('attribute_values_item_attribute_unique', ['item', 'attribute'])
 		.execute()
 
