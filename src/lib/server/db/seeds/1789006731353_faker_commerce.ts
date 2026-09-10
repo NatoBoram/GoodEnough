@@ -76,6 +76,7 @@ export async function seed(db: Kysely<DB>): Promise<void> {
 					} satisfies InsertObject<DB, 'items'>
 				}),
 			)
+			.onConflict(oc => oc.columns(['user', 'slug']).doNothing())
 			.returning(['id'])
 			.execute()
 
