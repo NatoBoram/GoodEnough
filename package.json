@@ -76,6 +76,7 @@
 		"@better-auth/kysely-adapter": "^1.7.2",
 		"@chromatic-com/storybook": "latest",
 		"@eslint/js": "^10.0.1",
+		"@faker-js/faker": "^10.6.0",
 		"@inlang/paraglide-js": "^2.18.2",
 		"@natoboram/heroicons.svelte": "^1.2.1",
 		"@natoboram/load_env": "^2.0.3",
