@@ -1,38 +1,31 @@
 <script lang="ts">
-	import { resolve } from '$app/paths'
-	import { m } from '$lib/paraglide/messages.js'
+	import CategoryAttribute from '$lib/categories/CategoryAttribute.svelte'
+	import CategoryItem from '$lib/categories/CategoryItem.svelte'
+	import Category from '$lib/categories/CategoryView.svelte'
+	import { dateTimeOptions } from '$lib/date_time_format.js'
 	import { getLocale } from '$lib/paraglide/runtime.js'
 	import type { PageProps } from './$types.ts'
 
-	const { data, params }: PageProps = $props()
+	const { data }: PageProps = $props()
 
-	const format = Intl.DateTimeFormat(getLocale(), {
-		day: 'numeric',
-		month: 'long',
-		year: 'numeric',
-		hour: 'numeric',
-		minute: 'numeric',
-	})
+	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
 </script>
 
-<main class="container mx-auto flex flex-col gap-4">
-	<h1 class="text-lg font-bold">{data.category.name}</h1>
+<main class="container mx-auto">
+	<Category
+		{format}
+		category={data.category}
+		description={data.description}
+		profile={data.profile}
+		user={data.user}
+	/>
 
-	<p>{data.category.summary}</p>
+	{#each data.attributes as attribute (attribute.id)}
+		<CategoryAttribute {attribute}></CategoryAttribute>
+	{/each}
 
-	<p class="prose text-main prose-strong:text-main">{@html data.description}</p>
-
-	{#if data.category.created_at.getTime() !== data.category.updated_at.getTime()}
-		<p class="text-sm text-dim italic">
-			{m.categories_view_edited({ date: format.format(data.category.updated_at) })}
-		</p>
-	{/if}
-
-	<a
-		href={resolve('/(app)/[username]/categories/[slug]/edit', {
-			slug: params.slug,
-			username: params.username,
-		})}
-		class="self-end rounded bg-success px-2 py-1">{m.categories_view_edit()}</a
-	>
+	<!-- Property 'items' does not exist -->
+	{#each data.items as item (item.id)}
+		<CategoryItem {item} profile={data.profile}></CategoryItem>
+	{/each}
 </main>

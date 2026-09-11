@@ -305,7 +305,7 @@ A must for any fan of black tea.`,
 			{ name: 'Cultivar', slug: 'cultivar', type: 'text', user: user.id },
 			{ name: 'Producer', slug: 'producer', type: 'text', user: user.id },
 			{ name: 'Altitude (m)', slug: 'altitude', type: 'number', user: user.id },
-			{ name: 'Date of harvest', slug: 'date-of-harvest', type: 'text', user: user.id },
+			{ name: 'Date of harvest', slug: 'date-of-harvest', type: 'date', user: user.id },
 			{ name: 'Certified by', slug: 'certified-by', type: 'text', user: user.id },
 
 			{ name: 'Caffeine (mg)', slug: 'caffeine', type: 'number', user: user.id },
