@@ -15,7 +15,7 @@ create table "users" (
 	"banned" boolean,
 	"ban_reason" text,
 	"ban_expires" timestamptz,
-	"username" text unique,
+	"username" text not null unique,
 	"display_username" text
 );
 

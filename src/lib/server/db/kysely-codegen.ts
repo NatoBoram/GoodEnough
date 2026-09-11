@@ -123,7 +123,7 @@ export interface User {
 	name: string
 	role: string | null
 	updated_at: Generated<Timestamp>
-	username: string | null
+	username: string
 }
 
 export interface Verification {

@@ -1,18 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths'
+	import { dateTimeOptions } from '$lib/date_time_format.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import { getLocale } from '$lib/paraglide/runtime.js'
 	import type { PageProps } from './$types.ts'
 
 	const { data, params }: PageProps = $props()
 
-	const format = Intl.DateTimeFormat(getLocale(), {
-		day: 'numeric',
-		month: 'long',
-		year: 'numeric',
-		hour: 'numeric',
-		minute: 'numeric',
-	})
+	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
 </script>
 
 <main class="container mx-auto flex flex-col gap-4">
