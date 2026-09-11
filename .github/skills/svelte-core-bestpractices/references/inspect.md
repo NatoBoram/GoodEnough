@@ -1,4 +1,5 @@
-> [!NOTE] `$inspect` only works during development. In a production build it becomes a noop.
+> [!NOTE]
+> `$inspect` only works during development. In a production build it becomes a noop.
 
 The `$inspect` rune is roughly equivalent to `console.log`, with the exception that it will re-run whenever its argument changes. `$inspect` tracks reactive state deeply, meaning that updating something inside an object or array using fine-grained reactivity will cause it to re-fire:
 

@@ -75,7 +75,8 @@ let a = $derived(await one(x))
 let b = $derived(await two(y))
 ```
 
-> [!NOTE] If you write code like this, expect Svelte to give you an [`await_waterfall`](https://svelte.dev/docs/svelte/runtime-warnings/llms.txt#Client-warnings-await_waterfall) warning
+> [!NOTE]
+> If you write code like this, expect Svelte to give you an [`await_waterfall`](https://svelte.dev/docs/svelte/runtime-warnings/llms.txt#Client-warnings-await_waterfall) warning
 
 ## Indicating loading states
 
@@ -123,11 +124,13 @@ import App from './App.svelte';
 const { head, body } = +++await+++ render(App);
 ```
 
-> [!NOTE] If you're using a framework like SvelteKit, this is done on your behalf.
+> [!NOTE]
+> If you're using a framework like SvelteKit, this is done on your behalf.
 
 If a `<svelte:boundary>` with a `pending` snippet is encountered during SSR, that snippet will be rendered while the rest of the content is ignored. All `await` expressions encountered outside boundaries with `pending` snippets will resolve and render their contents prior to `await render(...)` returning.
 
-> [!NOTE] In the future, we plan to add a streaming implementation that renders the content in the background.
+> [!NOTE]
+> In the future, we plan to add a streaming implementation that renders the content in the background.
 
 ## Forking
 

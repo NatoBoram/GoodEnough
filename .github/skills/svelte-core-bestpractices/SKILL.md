@@ -25,7 +25,8 @@ $effect(() => {
 })
 ```
 
-> [!NOTE] `$derived` is given an expression, _not_ a function. If you need to use a function (because the expression is complex, for example) use `$derived.by`.
+> [!NOTE]
+> `$derived` is given an expression, _not_ a function. If you need to use a function (because the expression is complex, for example) use `$derived.by`.
 
 Deriveds are writable — you can assign to them, just like `$state`, except that they will re-evaluate when their expression changes.
 
@@ -96,13 +97,15 @@ Avoid using `onMount` or `$effect` for this.
 {@render greeting('world')}
 ```
 
-> [!NOTE] Snippets declared at the top level of a component (i.e. not inside elements or blocks) can be referenced inside `<script>`. A snippet that doesn't reference component state is also available in a `<script module>`, in which case it can be exported for use by other components.
+> [!NOTE]
+> Snippets declared at the top level of a component (i.e. not inside elements or blocks) can be referenced inside `<script>`. A snippet that doesn't reference component state is also available in a `<script module>`, in which case it can be exported for use by other components.
 
 ## Each blocks
 
 Prefer to use [keyed each blocks](references/each.md) — this improves performance by allowing Svelte to surgically insert or remove items rather than updating the DOM belonging to existing items.
 
-> [!NOTE] The key _must_ uniquely identify the object. Do not use the index as a key.
+> [!NOTE]
+> The key _must_ uniquely identify the object. Do not use the index as a key.
 
 Avoid destructuring if you need to mutate the item (with something like `bind:value={item.count}`, for example).
 

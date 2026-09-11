@@ -295,7 +295,8 @@ Any content inside the component tags that is _not_ a snippet declaration implic
 
 <!-- codeblock:end -->
 
-> [!NOTE] Note that you cannot have a prop called `children` if you also have content inside the component — for this reason, you should avoid having props with that name
+> [!NOTE]
+> Note that you cannot have a prop called `children` if you also have content inside the component — for this reason, you should avoid having props with that name
 
 ### Optional snippet props
 
