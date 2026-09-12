@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CategoryAttribute from '$lib/categories/CategoryAttribute.svelte'
 	import CategoryItem from '$lib/categories/CategoryItem.svelte'
-	import Category from '$lib/categories/CategoryView.svelte'
+	import CategoryView from '$lib/categories/CategoryView.svelte'
 	import { dateTimeOptions } from '$lib/date_time_format.js'
 	import { getLocale } from '$lib/paraglide/runtime.js'
 	import type { PageProps } from './$types.ts'
@@ -11,8 +11,8 @@
 	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
 </script>
 
-<main class="container mx-auto">
-	<Category
+<main class="mx-auto">
+	<CategoryView
 		{format}
 		category={data.category}
 		description={data.description}

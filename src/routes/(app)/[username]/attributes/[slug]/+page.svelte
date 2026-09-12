@@ -10,7 +10,7 @@
 	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
 </script>
 
-<main class="container mx-auto flex flex-col gap-4">
+<main class="mx-auto flex flex-col gap-4">
 	<div class="flex flex-row items-baseline gap-2">
 		<h1 class="text-lg font-bold">{data.attribute.name}</h1>
 		<span class="text-sm text-dim">({data.attribute.type})</span>

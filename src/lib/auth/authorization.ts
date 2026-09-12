@@ -22,11 +22,13 @@ export const Role = {
 	user: 'user',
 } as const
 
+/** A user can have multiple roles. Multiple roles are stored as string separated by comma (`,`). */
 export function hasAdmin(role: string | null | undefined): boolean {
 	if (!role) return false
 	return role.split(',').some(r => r === Role.admin)
 }
 
+/** Determines if the currently logged-in user owns the resource owned associated with a profile. */
 export function isOwner(
 	profile: Pick<Selectable<User>, 'id'>,
 	user: Pick<Selectable<User>, 'id'> | undefined,
@@ -34,6 +36,8 @@ export function isOwner(
 	return profile.id === user?.id
 }
 
+/** Determines if something that belongs to someone (profile) can be edited by the currently
+ * logged-in user (user). Takes into account the `admin` role. */
 export function canEdit(
 	profile: Pick<Selectable<User>, 'id'>,
 	user: Pick<Selectable<User>, 'id' | 'role'> | undefined,

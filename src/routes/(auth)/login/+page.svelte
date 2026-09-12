@@ -7,12 +7,7 @@
 	const { form }: { form: ActionData } = $props()
 </script>
 
-<form
-	action="?/login"
-	class="container mx-auto flex max-w-md flex-col p-4"
-	method="POST"
-	use:enhance
->
+<form action="?/login" class="mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance>
 	<BookOpen class="size-6 self-center" />
 	<h1 class="mb-4 self-center text-lg font-semibold">{m.auth_log_in()}</h1>
 

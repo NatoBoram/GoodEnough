@@ -39,4 +39,4 @@
 </script>
 
 <TopBar {onLogout} {pathname} {profile} {theme} {toggleDark} {toggleLight} {user} />
-{@render children()}
+<div class="container mx-auto mb-4">{@render children()}</div>

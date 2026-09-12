@@ -7,7 +7,7 @@
 	const { form, data }: PageProps = $props()
 </script>
 
-<form action="?" class="container mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance>
+<form action="?" class="mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance>
 	<h1 class="mb-1 text-xl">{m.attributes_edit_title({ name: data.attribute.name })}</h1>
 
 	<!-- Name -->

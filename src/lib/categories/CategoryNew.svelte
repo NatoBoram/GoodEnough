@@ -9,7 +9,7 @@
 	const { error }: Props = $props()
 </script>
 
-<form action="?" class="container mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance>
+<form action="?" class="mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance>
 	<h1 class="mb-1 text-xl">{m.categories_new_title()}</h1>
 	<p class="mb-4 text-xs text-dim">{m.categories_new_subtitle()}</p>
 

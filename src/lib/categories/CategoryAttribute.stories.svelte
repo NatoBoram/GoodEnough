@@ -24,22 +24,22 @@
 	const number = {
 		id: '19f76f32-63ca-4c27-a532-d8f7299c9482',
 		name: 'Altitude (m)',
-		type: 'number',
 		summary: 'The height of cultivation.',
+		type: 'number',
 	} as const satisfies PickedAttribute
 
 	const date = {
 		id: '9515eff3-4dfd-4e61-bfbe-c51405084a54',
 		name: 'Date of harvest',
-		type: 'date',
 		summary: 'Each batch is cultivated at a different time.',
+		type: 'date',
 	} as const satisfies PickedAttribute
 
 	const boolean = {
 		id: '3f04ba67-7959-4885-9fee-356812c67c18',
 		name: 'Certified',
-		type: 'boolean',
 		summary: 'Some teas are certified by Ecocert.',
+		type: 'boolean',
 	} as const satisfies PickedAttribute
 </script>
 

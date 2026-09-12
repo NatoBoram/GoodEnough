@@ -4,6 +4,7 @@
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Category } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
+	import type { HTMLFormAttributes } from 'svelte/elements'
 
 	interface Props {
 		readonly category: Pick<
@@ -11,14 +12,23 @@
 			'description' | 'id' | 'name' | 'slug' | 'summary'
 		>
 		readonly error: string | undefined
+		readonly onsubmit?: HTMLFormAttributes['onsubmit']
 	}
 
-	const { category, error }: Props = $props()
+	const { category, error, onsubmit }: Props = $props()
 </script>
 
-<form action="?" class="container mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance>
-	<h1 class="mb-1 text-xl">{m.categories_edit_title({ name: category.name })}</h1>
-
+<form
+	action="?/category"
+	class="mx-auto flex max-w-xl flex-col"
+	method="POST"
+	use:enhance
+	onsubmit={event => {
+		if (!onsubmit) return
+		event.preventDefault()
+		onsubmit(event)
+	}}
+>
 	<!-- Name -->
 	<label for="name" class="mb-1 text-sm font-semibold"> {m.form_label_name()} </label>
 	<input

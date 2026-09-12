@@ -7,3 +7,11 @@ export function getFormString(form: FormData, name: string): string {
 	logger.warn({ name, value }, 'Invalid form value')
 	return ''
 }
+
+export function getFormStrings(form: FormData, name: string): string[] {
+	const value = form.getAll(name)
+	if (value.every(v => typeof v === 'string')) return value
+
+	logger.warn({ name, value }, 'Invalid form values')
+	return []
+}

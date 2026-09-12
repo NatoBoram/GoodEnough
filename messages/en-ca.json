@@ -30,6 +30,10 @@
 	"auth_sign_up": "Sign up",
 	"auth_username": "Username",
 
+	"category_attribute_none_1": "There are no attributes configured yet. Add attributes",
+	"category_attribute_none_2": "here",
+	"category_attribute_none_3": ".",
+
 	"categories_edit_submit": "Save",
 	"categories_edit_title": "Edit {name}",
 
