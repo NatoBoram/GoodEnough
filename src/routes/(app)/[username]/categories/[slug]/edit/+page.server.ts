@@ -50,7 +50,7 @@ export const actions: Actions = {
 			db
 				.updateTable('categories')
 				.set({ name, slug, summary, description, updated_at: new Date() })
-				.where('user', '=', locals.user.id)
+				.where('user', '=', profile.value.id)
 				.where('slug', '=', params.slug)
 				.returning(['slug'])
 				.executeTakeFirstOrThrow(),
@@ -64,7 +64,7 @@ export const actions: Actions = {
 		// Success
 		return redirect(
 			303,
-			resolve('/(app)/[username]/categories/[slug]', { slug, username: locals.user.username }),
+			resolve('/(app)/[username]/categories/[slug]', { slug, username: profile.value.username }),
 		)
 	},
 }

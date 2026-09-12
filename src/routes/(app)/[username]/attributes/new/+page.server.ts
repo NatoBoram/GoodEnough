@@ -1,4 +1,5 @@
 import { resolve } from '$app/paths'
+import { canEdit } from '$lib/auth/authorization.js'
 import { isAttributeType } from '$lib/forms.js'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
@@ -7,15 +8,32 @@ import { logger } from '$lib/server/logger.js'
 import { error, fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types.ts'
 
-export const load: PageServerLoad = (({ locals, params }) => {
-	if (locals.user?.username !== params.username) return error(403)
-	return
+export const load: PageServerLoad = (async ({ locals, parent }) => {
+	if (!locals.user?.id) return error(401, 'Unauthorized')
+
+	const { profile } = await parent()
+	if (!canEdit(profile, locals.user)) return error(403, 'Forbidden')
 }) satisfies PageServerLoad
 
 export const actions: Actions = {
-	default: async ({ request, locals }) => {
-		if (!locals.user?.username) return fail(403, { message: 'Forbidden' })
+	default: async ({ request, locals, params }) => {
+		// Authentication
+		if (!locals.user?.id) return error(401, 'Unauthorized')
 
+		// Authorization
+		const profile = await asyncResult(
+			db
+				.selectFrom('users')
+				.where('username', '=', params.username)
+				.select(['id', 'username'])
+				.executeTakeFirst(),
+			'selecting profile',
+		)
+		if (!profile.ok) return error(500, 'Failed to select profile')
+		if (!profile.value?.username) return error(404, 'Profile not found')
+		if (!canEdit(profile.value, locals.user)) return error(403, 'Forbidden')
+
+		// Form
 		const data = await request.formData()
 		const name = getFormString(data, 'name')
 		const slug = getFormString(data, 'slug')
@@ -37,7 +55,7 @@ export const actions: Actions = {
 					slug,
 					summary,
 					type,
-					user: locals.user.id,
+					user: profile.value.id,
 				})
 				.returning(['slug'])
 				.executeTakeFirstOrThrow(),
@@ -50,7 +68,7 @@ export const actions: Actions = {
 
 		return redirect(
 			303,
-			resolve('/(app)/[username]/attributes/[slug]', { slug, username: locals.user.username }),
+			resolve('/(app)/[username]/attributes/[slug]', { slug, username: profile.value.username }),
 		)
 	},
 }
