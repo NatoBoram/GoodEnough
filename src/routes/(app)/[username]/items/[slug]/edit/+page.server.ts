@@ -129,7 +129,8 @@ export const actions: Actions = {
 						return {
 							attribute: attribute.id,
 							item: item.id,
-							value_boolean: attribute.type === 'boolean' ? value === 'true' : null,
+							value_boolean:
+								attribute.type === 'boolean' ? data.has(`attribute-${attribute.id}`) : null,
 							value_date: attribute.type === 'date' && value ? new Date(value) : null,
 							value_text: attribute.type === 'text' ? value : null,
 							value_number: attribute.type === 'number' && value !== '' ? Number(value) : null,

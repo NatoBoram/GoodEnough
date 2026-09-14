@@ -18,7 +18,7 @@
 		type="date"
 		id="attribute-{value.id}"
 		name="attribute-{value.id}"
-		value={value.value_date}
+		value={value.value_date instanceof Date ? value.value_date.toISOString().slice(0, 10) : ''}
 		class="bg-container"
 	/>
 	<p>{value.summary}</p>

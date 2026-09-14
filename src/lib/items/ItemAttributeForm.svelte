@@ -31,7 +31,9 @@
 		<p class="error">{error}</p>
 	{/if}
 
-	<button type="submit" class="self-end rounded bg-success px-2 py-1">
-		{m.form_label_submit()}
-	</button>
+	{#if attributes.length}
+		<button type="submit" class="self-end rounded bg-success px-2 py-1">
+			{m.form_label_submit()}
+		</button>
+	{/if}
 </form>
