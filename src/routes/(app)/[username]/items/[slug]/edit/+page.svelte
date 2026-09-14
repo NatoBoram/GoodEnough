@@ -6,6 +6,7 @@
 	const { form, data }: PageProps = $props()
 </script>
 
-<ItemEdit item={data.item} error={form?.message} />
-
-<ItemAttributeForm attributes={data.attributes} error={form?.message} />
+<div class="mx-auto max-w-2xl">
+	<ItemEdit item={data.item} error={form?.message} />
+	<ItemAttributeForm attributes={data.attributes} error={form?.message} />
+</div>

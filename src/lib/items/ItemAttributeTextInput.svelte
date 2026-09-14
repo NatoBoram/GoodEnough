@@ -12,14 +12,17 @@
 	const { value }: Props = $props()
 </script>
 
-<div>
-	<label for="attribute-{value.id}">{value.name}</label>
+<div class="flex flex-row items-center justify-between">
+	<div>
+		<label for="attribute-{value.id}" class="font-semibold">{value.name}</label>
+		<p class="text-sm text-dim">{value.summary}</p>
+	</div>
 	<input
 		type="text"
 		id="attribute-{value.id}"
 		name="attribute-{value.id}"
-		class="bg-container"
+		class="w-3xs bg-container"
 		value={value.value_text}
+		placeholder={value.name}
 	/>
-	<p>{value.summary}</p>
 </div>

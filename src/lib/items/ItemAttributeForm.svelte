@@ -23,7 +23,7 @@
 	const { attributes, error }: Props = $props()
 </script>
 
-<form method="POST" use:enhance action="?/attributes">
+<form method="POST" use:enhance action="?/attributes" class="flex flex-col gap-4">
 	{#each attributes as attribute (attribute.id)}
 		<ItemAttributeValueInput value={attribute} />
 	{/each}

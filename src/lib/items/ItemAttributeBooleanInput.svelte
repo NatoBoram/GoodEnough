@@ -12,15 +12,18 @@
 	const { value }: Props = $props()
 </script>
 
-<div>
-	<label for="attribute-{value.id}">{value.name}</label>
+<div class="flex flex-row items-center justify-between">
+	<div>
+		<label for="attribute-{value.id}" class="font-semibold">{value.name}</label>
+		<p class="text-sm text-dim">{value.summary}</p>
+	</div>
 	<input
 		type="checkbox"
 		id="attribute-{value.id}"
 		name="attribute-{value.id}"
 		value={true}
-		class="bg-container"
+		class="bg-surface checked:bg-container"
 		checked={value.value_boolean}
+		placeholder={value.name}
 	/>
-	<p>{value.summary}</p>
 </div>

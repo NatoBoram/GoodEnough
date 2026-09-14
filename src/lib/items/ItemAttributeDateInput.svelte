@@ -12,14 +12,17 @@
 	const { value }: Props = $props()
 </script>
 
-<div>
-	<label for="attribute-{value.id}">{value.name}</label>
+<div class="flex flex-row items-center justify-between">
+	<div>
+		<label for="attribute-{value.id}" class="font-semibold">{value.name}</label>
+		<p class="text-sm text-dim">{value.summary}</p>
+	</div>
 	<input
 		type="date"
 		id="attribute-{value.id}"
 		name="attribute-{value.id}"
 		value={value.value_date instanceof Date ? value.value_date.toISOString().slice(0, 10) : ''}
-		class="bg-container"
+		class="w-3xs bg-container"
+		placeholder={value.name}
 	/>
-	<p>{value.summary}</p>
 </div>
