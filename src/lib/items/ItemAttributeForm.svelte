@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
@@ -22,7 +23,7 @@
 	const { attributes, error }: Props = $props()
 </script>
 
-<form method="GET" action="?/attributes">
+<form method="POST" use:enhance action="?/attributes">
 	{#each attributes as attribute (attribute.id)}
 		<ItemAttributeValueInput value={attribute} />
 	{/each}

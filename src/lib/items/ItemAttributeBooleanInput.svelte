@@ -18,8 +18,9 @@
 		type="checkbox"
 		id="attribute-{value.id}"
 		name="attribute-{value.id}"
-		value={value.value_boolean}
+		value={true}
 		class="bg-container"
+		checked={value.value_boolean}
 	/>
 	<p>{value.summary}</p>
 </div>

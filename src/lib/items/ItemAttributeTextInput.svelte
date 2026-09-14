@@ -14,6 +14,12 @@
 
 <div>
 	<label for="attribute-{value.id}">{value.name}</label>
-	<input type="text" id="attribute-{value.id}" name="attribute-{value.id}" class="bg-container" />
+	<input
+		type="text"
+		id="attribute-{value.id}"
+		name="attribute-{value.id}"
+		class="bg-container"
+		value={value.value_text}
+	/>
 	<p>{value.summary}</p>
 </div>

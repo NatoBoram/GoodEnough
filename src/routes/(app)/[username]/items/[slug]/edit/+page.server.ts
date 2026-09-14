@@ -129,10 +129,10 @@ export const actions: Actions = {
 						return {
 							attribute: attribute.id,
 							item: item.id,
-							value_boolean: attribute.type == 'boolean' ? value === 'true' : null,
-							value_date: attribute.type == 'date' ? new Date(value) : null,
-							value_text: attribute.type == 'text' ? value : null,
-							value_number: attribute.type == 'number' ? Number(value) : null,
+							value_boolean: attribute.type === 'boolean' ? value === 'true' : null,
+							value_date: attribute.type === 'date' && value ? new Date(value) : null,
+							value_text: attribute.type === 'text' ? value : null,
+							value_number: attribute.type === 'number' && value !== '' ? Number(value) : null,
 						}
 					}),
 				)
