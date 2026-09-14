@@ -10,6 +10,7 @@ name: Stories
 - Set `tags: ['autodocs']` on the meta object for every story file. Add `argTypes: {}` when no custom control metadata is required.
 - Use a stable title that matches the feature area and component, such as `Layout/TopBar`, `Categories/CategoryEdit`, or `Colours/Nord`.
 - Keep story names descriptive and user-facing: `Default`, `With user`, `With error`, `Owner`, `Admin`, and similar state names are preferred over implementation detail names.
+- Never dynamically generate stories with loops such as `{#each ...}` inside a `Story` block. Each story must be written plainly as a distinct `Story` entry with explicit `args` for a single state or variant.
 - Define reusable demo data near the top of the file. Prefer small, typed fixtures built from the real database models instead of ad hoc objects.
 - When the component accepts persisted data, type fixtures with `Selectable<T>` and `Pick` to include only the fields the component needs.
 - Use `as const satisfies ...` for fixture objects so the examples remain readonly and still match the expected shape exactly.
