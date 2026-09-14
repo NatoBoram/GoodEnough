@@ -6,12 +6,26 @@
 	import type { Selectable } from 'kysely'
 	import ItemView from './ItemView.svelte'
 
+	const description =
+		await parseMarkdown(`A great Chinese classic whole leaf green tea with a bright tint of jade. Our producer Mr. He masters marvelously this "Dragonwell" style.
+
+A clear green liquor, brisk and tasty with elegant floral and grassy notes well structured with an edge of fresh hazelnut.
+
+This lot is exclusive to our tea house and produced according to our specifications.`)
+
+	const format = Intl.DateTimeFormat('en-ca', dateTimeOptions)
+
+	const profile = {
+		id: '7c7c2700-5025-49ab-8f41-06aa43f8673f',
+		username: 'profilename',
+	} as const satisfies Pick<Selectable<User>, 'id' | 'username'>
+
 	const { Story } = defineMeta({
 		title: 'Items/ItemView',
 		component: ItemView,
 		tags: ['autodocs'],
 		argTypes: {},
-		args: {},
+		args: { description, format, profile },
 	})
 
 	const firstDate = new Date(Date.UTC(2026, 8, 23, 14, 30, 0))
@@ -28,27 +42,12 @@
 		Selectable<Item>,
 		'created_at' | 'id' | 'name' | 'slug' | 'summary' | 'updated_at'
 	>
-
-	const description =
-		await parseMarkdown(`A great Chinese classic whole leaf green tea with a bright tint of jade. Our producer Mr. He masters marvelously this "Dragonwell" style.
-
-A clear green liquor, brisk and tasty with elegant floral and grassy notes well structured with an edge of fresh hazelnut.
-
-This lot is exclusive to our tea house and produced according to our specifications.`)
-
-	const profile = {
-		id: '7c7c2700-5025-49ab-8f41-06aa43f8673f',
-		username: 'profilename',
-	} as const satisfies Pick<Selectable<User>, 'id' | 'username'>
 </script>
 
 <Story
 	name="Default"
 	args={{
 		item,
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
-		profile,
 	}}
 />
 
@@ -56,8 +55,5 @@ This lot is exclusive to our tea house and produced according to our specificati
 	name="Edited"
 	args={{
 		item: { ...item, updated_at: secondDate },
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
-		profile,
 	}}
 />

@@ -11,7 +11,7 @@
 </script>
 
 {#if value.value_boolean}
-	{m.item_attribute_true}
+	{m.item_attribute_true()}
 {:else}
-	{m.item_attribute_false}
+	{m.item_attribute_false()}
 {/if}

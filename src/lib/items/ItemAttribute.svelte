@@ -22,6 +22,10 @@
 </script>
 
 <div>
-	{attribute.name}: <ItemAttributeValue value={attribute} {format} />
-	{attribute.summary}
+	<p>
+		{attribute.name}: <ItemAttributeValue value={attribute} {format} />
+	</p>
+	<p>
+		{attribute.summary}
+	</p>
 </div>

@@ -6,12 +6,19 @@
 	import type { Selectable } from 'kysely'
 	import CategoryView from './CategoryView.svelte'
 
+	const description =
+		await parseMarkdown(`The full description supports markdown. This includes **bold**, _italic_, \`code\` and other blocks.
+
+It's also a place where, normally, a user could write all their thoughts about the category itself.`)
+
+	const format = Intl.DateTimeFormat('en-ca', dateTimeOptions)
+
 	const { Story } = defineMeta({
 		title: 'Categories/CategoryView',
 		component: CategoryView,
 		tags: ['autodocs'],
 		argTypes: {},
-		args: {},
+		args: { description, format },
 	})
 
 	const firstDate = new Date(Date.UTC(2026, 8, 23, 14, 30, 0))
@@ -31,11 +38,6 @@
 		'created_at' | 'id' | 'image' | 'name' | 'slug' | 'summary' | 'updated_at'
 	>
 
-	const description =
-		await parseMarkdown(`The full description supports markdown. This includes **bold**, _italic_, \`code\` and other blocks.
-
-It's also a place where, normally, a user could write all their thoughts about the category itself.`)
-
 	const profile = {
 		id: 'c63d409c-d2ac-4d5d-8485-66b231e459a0',
 		username: 'profilename',
@@ -51,8 +53,6 @@ It's also a place where, normally, a user could write all their thoughts about t
 	name="Default"
 	args={{
 		category,
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
 		profile,
 	}}
 />
@@ -61,8 +61,6 @@ It's also a place where, normally, a user could write all their thoughts about t
 	name="Edited"
 	args={{
 		category: { ...category, updated_at: secondDate },
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
 		profile,
 	}}
 />
@@ -71,8 +69,6 @@ It's also a place where, normally, a user could write all their thoughts about t
 	name="Owner"
 	args={{
 		category,
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
 		profile: { ...user, ...profile },
 		user: { ...user, ...profile },
 	}}
@@ -82,8 +78,6 @@ It's also a place where, normally, a user could write all their thoughts about t
 	name="Admin"
 	args={{
 		category,
-		description,
-		format: Intl.DateTimeFormat('en-ca', dateTimeOptions),
 		profile,
 		user: { ...user, role: 'admin' },
 	}}
