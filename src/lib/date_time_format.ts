@@ -5,3 +5,9 @@ export const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	hour: 'numeric',
 	minute: 'numeric',
 }
+
+export const dateOptions: Intl.DateTimeFormatOptions = {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+}

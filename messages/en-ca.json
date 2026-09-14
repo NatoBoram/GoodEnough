@@ -55,6 +55,9 @@
 	"form_label_submit": "Submit",
 	"form_label_summary": "Summary",
 
+	"item_attribute_true": "Yes",
+	"item_attribute_false": "No",
+
 	"items_edit_submit": "Save",
 	"items_edit_title": "Edit {name}",
 

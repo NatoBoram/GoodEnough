@@ -1,33 +1,17 @@
 <script lang="ts">
-	import { resolve } from '$app/paths'
-	import { dateTimeOptions } from '$lib/date_time_format.js'
-	import { m } from '$lib/paraglide/messages.js'
+	import { dateOptions } from '$lib/date_time_format.js'
+	import ItemAttribute from '$lib/items/ItemAttribute.svelte'
+	import ItemView from '$lib/items/ItemView.svelte'
 	import { getLocale } from '$lib/paraglide/runtime.js'
 	import type { PageProps } from './$types.ts'
 
-	const { data, params }: PageProps = $props()
+	const { data }: PageProps = $props()
 
-	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
+	const format = Intl.DateTimeFormat(getLocale(), dateOptions)
 </script>
 
-<main class="mx-auto flex flex-col gap-4">
-	<h1 class="text-lg font-bold">{data.item.name}</h1>
+<ItemView item={data.item} description={data.description} profile={data.profile} {format} />
 
-	<p>{data.item.summary}</p>
-
-	<p class="prose text-main prose-strong:text-main">{@html data.description}</p>
-
-	{#if data.item.created_at.getTime() !== data.item.updated_at.getTime()}
-		<p class="text-sm text-dim italic">
-			{m.items_view_edited({ date: format.format(data.item.updated_at) })}
-		</p>
-	{/if}
-
-	<a
-		href={resolve('/(app)/[username]/items/[slug]/edit', {
-			slug: params.slug,
-			username: params.username,
-		})}
-		class="self-end rounded bg-success px-2 py-1">{m.items_view_edit()}</a
-	>
-</main>
+{#each data.attributes as attribute (attribute.id)}
+	<ItemAttribute {attribute} {format} />
+{/each}

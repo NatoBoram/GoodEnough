@@ -55,6 +55,9 @@
 	"form_label_submit": "Sauvegarder",
 	"form_label_summary": "Résumé",
 
+	"item_attribute_true": "Oui",
+	"item_attribute_false": "Non",
+
 	"items_edit_submit": "Sauvegarder",
 	"items_edit_title": "Modifier {name}",
 
