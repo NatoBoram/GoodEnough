@@ -1,5 +1,6 @@
 <script lang="ts">
 	import ItemAttributeForm from '$lib/items/ItemAttributeForm.svelte'
+	import ItemCategoryForm from '$lib/items/ItemCategoryForm.svelte'
 	import ItemEdit from '$lib/items/ItemEdit.svelte'
 	import type { PageProps } from './$types.ts'
 
@@ -8,5 +9,6 @@
 
 <div class="mx-auto max-w-2xl">
 	<ItemEdit item={data.item} error={form?.message} />
+	<ItemCategoryForm categories={data.categories} assigned={data.assigned} error={form?.message} />
 	<ItemAttributeForm attributes={data.attributes} error={form?.message} />
 </div>

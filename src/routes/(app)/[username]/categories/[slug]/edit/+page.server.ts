@@ -129,11 +129,12 @@ export const actions: Actions = {
 				if (attributes.length) dquery = dquery.where('attribute', 'not in', attributes)
 				await dquery.execute()
 
-				await db
-					.insertInto('category_attributes')
-					.values(attributes.map(attribute => ({ category: category.id, attribute })))
-					.onConflict(oc => oc.columns(['category', 'attribute']).doNothing())
-					.execute()
+				if (attributes.length)
+					await db
+						.insertInto('category_attributes')
+						.values(attributes.map(attribute => ({ category: category.id, attribute })))
+						.onConflict(oc => oc.columns(['category', 'attribute']).doNothing())
+						.execute()
 			}),
 			'updating category attributes',
 		)
