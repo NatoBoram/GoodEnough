@@ -14,7 +14,7 @@
 </script>
 
 <form action="?/item" class="flex flex-col p-4" method="POST" use:enhance>
-	<h1 class="mb-1 text-xl">{m.items_edit_title({ name: item.name })}</h1>
+	<h2 class="mb-1 text-xl">{m.items_edit_title({ name: item.name })}</h2>
 
 	<!-- Name -->
 	<label for="name" class="mb-1 text-sm font-semibold"> {m.form_label_name()} </label>

@@ -3,7 +3,7 @@ import { canEdit } from '$lib/auth/authorization.js'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
 import { getItemAttributeValues } from '$lib/server/db/queries.js'
-import { getFormString } from '$lib/server/forms.js'
+import { getFormBoolean, getFormDate, getFormNumber, getFormString } from '$lib/server/forms.js'
 import { logger } from '$lib/server/logger.js'
 import { error, fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types.ts'
@@ -124,16 +124,16 @@ export const actions: Actions = {
 			db
 				.insertInto('attribute_values')
 				.values(
-					attributes.map(attribute => {
-						const value = getFormString(data, `attribute-${attribute.id}`)
+					attributes.map(({ id, type }) => {
+						const name = `attribute-${id}`
+
 						return {
-							attribute: attribute.id,
+							attribute: id,
 							item: item.id,
-							value_boolean:
-								attribute.type === 'boolean' ? data.has(`attribute-${attribute.id}`) : null,
-							value_date: attribute.type === 'date' && value ? new Date(value) : null,
-							value_text: attribute.type === 'text' ? value : null,
-							value_number: attribute.type === 'number' && value !== '' ? Number(value) : null,
+							...(type === 'text' ? { value_text: getFormString(data, name) } : {}),
+							...(type === 'number' ? { value_number: getFormNumber(data, name) } : {}),
+							...(type === 'boolean' ? { value_boolean: getFormBoolean(data, name) } : {}),
+							...(type === 'date' ? { value_date: getFormDate(data, name) } : {}),
 						}
 					}),
 				)

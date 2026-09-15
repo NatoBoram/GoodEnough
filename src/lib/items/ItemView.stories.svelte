@@ -13,7 +13,7 @@ A clear green liquor, brisk and tasty with elegant floral and grassy notes well 
 
 This lot is exclusive to our tea house and produced according to our specifications.`)
 
-	const format = Intl.DateTimeFormat('en-ca', dateTimeOptions)
+	const format = Intl.DateTimeFormat('en-gb', dateTimeOptions)
 
 	const profile = {
 		id: '7c7c2700-5025-49ab-8f41-06aa43f8673f',

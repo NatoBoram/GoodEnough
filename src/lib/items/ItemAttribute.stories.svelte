@@ -5,7 +5,7 @@
 	import type { Selectable } from 'kysely'
 	import ItemAttribute from './ItemAttribute.svelte'
 
-	const format = Intl.DateTimeFormat('en-ca', dateOptions)
+	const format = Intl.DateTimeFormat('en-gb', dateOptions)
 
 	const { Story } = defineMeta({
 		title: 'Items/ItemAttribute',

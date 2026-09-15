@@ -24,6 +24,8 @@
 </script>
 
 <form method="POST" use:enhance action="?/attributes" class="flex flex-col gap-4">
+	<h2 id="attributes" class="text-xl">{m.items_edit_attributes_title()}</h2>
+
 	{#each attributes as attribute (attribute.id)}
 		<ItemAttributeValueInput value={attribute} />
 	{/each}

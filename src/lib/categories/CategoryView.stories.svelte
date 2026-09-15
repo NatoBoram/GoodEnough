@@ -11,7 +11,7 @@
 
 It's also a place where, normally, a user could write all their thoughts about the category itself.`)
 
-	const format = Intl.DateTimeFormat('en-ca', dateTimeOptions)
+	const format = Intl.DateTimeFormat('en-gb', dateTimeOptions)
 
 	const { Story } = defineMeta({
 		title: 'Categories/CategoryView',
