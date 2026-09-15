@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { submit } from '$lib/client/form.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import { BookOpen } from '@natoboram/heroicons.svelte/24/solid'
 	import type { ActionData } from './$types.ts'
@@ -8,12 +7,7 @@
 	let { form }: { form: ActionData } = $props()
 </script>
 
-<form
-	action="?/signup"
-	class="mx-auto flex max-w-md flex-col p-4"
-	method="POST"
-	use:enhance={submit}
->
+<form action="?/signup" class="mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance>
 	<BookOpen class="size-6 self-center" />
 	<h1 class="mb-4 self-center text-lg font-semibold">{m.auth_sign_up()}</h1>
 

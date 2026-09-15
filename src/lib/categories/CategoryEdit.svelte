@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { submit } from '$lib/client/form.js'
+	import { edit } from '$lib/client/form.js'
 	import { maxDescription, maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Category } from '$lib/server/db/kysely-codegen.js'
@@ -23,7 +23,7 @@
 	action="?/category"
 	class="mx-auto flex max-w-xl flex-col"
 	method="POST"
-	use:enhance={submit}
+	use:enhance={edit}
 	onsubmit={event => {
 		if (!onsubmit) return
 		event.preventDefault()

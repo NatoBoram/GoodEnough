@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { submit } from '$lib/client/form.js'
+	import { edit } from '$lib/client/form.js'
 	import { maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
@@ -8,7 +8,7 @@
 	const { form, data }: PageProps = $props()
 </script>
 
-<form action="?" class="mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance={submit}>
+<form action="?" class="mx-auto flex max-w-xl flex-col p-4" method="POST" use:enhance={edit}>
 	<h1 class="mb-1 text-xl">{m.attributes_edit_title({ name: data.attribute.name })}</h1>
 
 	<!-- Name -->

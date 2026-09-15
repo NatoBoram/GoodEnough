@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
-	import { submit } from '$lib/client/form.js'
+	import { edit } from '$lib/client/form.js'
 	import { maxDescription, maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Item } from '$lib/server/db/kysely-codegen.js'
@@ -14,7 +14,7 @@
 	const { item, error }: Props = $props()
 </script>
 
-<form action="?/item" class="flex flex-col p-4" method="POST" use:enhance={submit}>
+<form action="?/item" class="flex flex-col p-4" method="POST" use:enhance={edit}>
 	<h2 class="mb-1 text-xl">{m.items_edit_title({ name: item.name })}</h2>
 
 	<!-- Name -->
