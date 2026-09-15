@@ -30,7 +30,7 @@
 		text: ItemAttributeTextInput,
 	} as const satisfies Record<Attribute['type'], Component<Props, object, ''>>
 
-	const Value = $derived(components[value.type])
+	const Input = $derived(components[value.type])
 </script>
 
-<Value {value} />
+<Input {value} />
