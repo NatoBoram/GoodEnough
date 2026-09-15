@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
+	import { submit } from '$lib/client/form.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Category, CategoryItem } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
@@ -14,7 +15,7 @@
 	const { categories, assigned, error }: Props = $props()
 </script>
 
-<form method="POST" use:enhance action="?/categories" class="flex flex-col gap-4">
+<form method="POST" use:enhance={submit} action="?/categories" class="flex flex-col gap-4">
 	<h2 id="categories" class="text-xl">{m.items_edit_categories_title()}</h2>
 
 	{#each categories as category (category.id)}

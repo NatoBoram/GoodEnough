@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
+	import { submit } from '$lib/client/form.js'
 	import { maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { ActionData } from './$types.ts'
@@ -7,7 +8,7 @@
 	const { form }: { form: ActionData } = $props()
 </script>
 
-<form action="?" class="mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance>
+<form action="?" class="mx-auto flex max-w-md flex-col p-4" method="POST" use:enhance={submit}>
 	<h1 class="mb-1 text-xl">{m.items_new_title()}</h1>
 	<p class="mb-4 text-xs text-dim">{m.items_new_subtitle()}</p>
 

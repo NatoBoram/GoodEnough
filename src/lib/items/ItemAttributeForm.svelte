@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
+	import { submit } from '$lib/client/form.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
@@ -23,7 +24,7 @@
 	const { attributes, error }: Props = $props()
 </script>
 
-<form method="POST" use:enhance action="?/attributes" class="flex flex-col gap-4">
+<form method="POST" use:enhance={submit} action="?/attributes" class="flex flex-col gap-4">
 	<h2 id="attributes" class="text-xl">{m.items_edit_attributes_title()}</h2>
 
 	{#each attributes as attribute (attribute.id)}
