@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths'
 	import { canEdit } from '$lib/auth/authorization.js'
+	import CategoryRow from '$lib/categories/CategoryRow.svelte'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
 
@@ -26,16 +27,6 @@
 	</form>
 
 	{#each data.categories as category (category.id)}
-		<div class="rounded bg-surface p-4">
-			<a
-				href={resolve('/(app)/[username]/categories/[slug]', {
-					slug: category.slug,
-					username: params.username,
-				})}
-			>
-				<h2 class="font-semibold">{category.name}</h2>
-			</a>
-			<p class="prose text-main">{category.summary}</p>
-		</div>
+		<CategoryRow {category} profile={data.profile} />
 	{/each}
 </div>

@@ -1,0 +1,53 @@
+<script lang="ts">
+	import { enhance } from '$app/forms'
+	import { create } from '$lib/client/form.js'
+	import { maxName, maxSlug, maxSummary } from '$lib/forms.js'
+	import { m } from '$lib/paraglide/messages.js'
+
+	interface Props {
+		readonly error: string | undefined
+	}
+
+	const { error }: Props = $props()
+</script>
+
+<form action="?" class="mx-auto flex flex-col p-4" method="POST" use:enhance={create}>
+	<h1 class="mb-1 text-xl">{m.items_new_title()}</h1>
+	<p class="mb-4 text-xs text-dim">{m.items_new_subtitle()}</p>
+
+	<!-- Name -->
+	<label for="name" class="mb-1 text-sm font-semibold"> {m.form_label_name()} </label>
+	<input
+		id="name"
+		name="name"
+		type="text"
+		required
+		class="mb-4 bg-container"
+		maxlength={maxName}
+		minlength={1}
+	/>
+
+	<!-- Slug -->
+	<label for="slug" class="mb-1 text-sm font-semibold"> {m.form_label_slug()} </label>
+	<input
+		id="slug"
+		name="slug"
+		type="text"
+		required
+		class="mb-4 bg-container"
+		maxlength={maxSlug}
+		minlength={1}
+	/>
+
+	<!-- Summary -->
+	<label for="summary" class="mb-1 text-sm font-semibold"> {m.form_label_summary()} </label>
+	<input id="summary" name="summary" type="text" class="mb-4 bg-container" maxlength={maxSummary} />
+
+	<button type="submit" class="mb-4 self-end rounded bg-success p-2">
+		{m.items_new_submit()}
+	</button>
+
+	{#if error}
+		<p class="text-error">{error}</p>
+	{/if}
+</form>

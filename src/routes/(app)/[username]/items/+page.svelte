@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths'
 	import { canEdit } from '$lib/auth/authorization.js'
+	import ItemRow from '$lib/items/ItemRow.svelte'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { PageProps } from './$types.ts'
 
@@ -26,16 +27,6 @@
 	</form>
 
 	{#each data.items as item (item.id)}
-		<div class="rounded bg-surface p-4">
-			<a
-				href={resolve('/(app)/[username]/items/[slug]', {
-					slug: item.slug,
-					username: params.username,
-				})}
-			>
-				<h2 class="font-semibold">{item.name}</h2>
-			</a>
-			<p class="prose text-main">{item.summary}</p>
-		</div>
+		<ItemRow profile={data.profile} {item} />
 	{/each}
 </div>
