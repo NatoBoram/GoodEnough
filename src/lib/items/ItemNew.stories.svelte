@@ -1,10 +1,10 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf'
-	import CategoryNew from './CategoryNew.svelte'
+	import ItemNew from './ItemNew.svelte'
 
 	const { Story } = defineMeta({
-		title: 'Categories/CategoryNew',
-		component: CategoryNew,
+		title: 'Items/ItemNew',
+		component: ItemNew,
 		tags: ['autodocs'],
 		argTypes: {},
 		args: {},

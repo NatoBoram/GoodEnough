@@ -35,7 +35,7 @@
 <Story name="Default" args={{}} />
 
 <Story
-	name="With user"
+	name="User"
 	args={{
 		pathname: resolve('/(app)/[username]/categories', { username: user.username }),
 		user,
@@ -43,7 +43,7 @@
 />
 
 <Story
-	name="With profile"
+	name="Profile"
 	args={{
 		pathname: resolve('/(app)/[username]/items', { username: profile.username }),
 		profile,
@@ -51,7 +51,7 @@
 />
 
 <Story
-	name="With user profile"
+	name="User Profile"
 	args={{
 		pathname: resolve('/(app)/[username]/attributes', { username: profile.username }),
 		profile,

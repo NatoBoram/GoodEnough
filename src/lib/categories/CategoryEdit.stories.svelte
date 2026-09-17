@@ -26,4 +26,4 @@
 
 <Story name="Default" args={{ category }} />
 
-<Story name="With error" args={{ category, error: 'This is an error message.' }} />
+<Story name="Error" args={{ category, error: 'This is an error message.' }} />

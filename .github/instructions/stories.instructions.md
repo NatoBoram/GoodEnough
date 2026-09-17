@@ -9,7 +9,7 @@ name: Stories
 - Start every story file with `defineMeta` from `@storybook/addon-svelte-csf` and destructure `Story` from it.
 - Set `tags: ['autodocs']` on the meta object for every story file. Add `argTypes: {}` when no custom control metadata is required.
 - Use a stable title that matches the feature area and component, such as `Layout/TopBar`, `Categories/CategoryEdit`, or `Colours/Nord`.
-- Keep story names descriptive and user-facing: `Default`, `With user`, `With error`, `Owner`, `Admin`, and similar state names are preferred over implementation detail names.
+- Keep story names descriptive and user-facing. Prefer direct state names such as `Default`, `Error`, `Owner`, `Admin` and `User` rather than implementation-detail names or verbose phrases like `With error`.
 - Never dynamically generate stories with loops such as `{#each ...}` inside a `Story` block. Each story must be written plainly as a distinct `Story` entry with explicit `args` for a single state or variant.
 - Define reusable demo data near the top of the file. Prefer small, typed fixtures built from the real database models instead of ad hoc objects.
 - When the component accepts persisted data, type fixtures with `Selectable<T>` and `Pick` to include only the fields the component needs.
