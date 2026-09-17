@@ -64,6 +64,7 @@
 	"items_edit_attributes_title": "Modifier les attributs",
 
 	"items_edit_categories_title": "Associer des catégories",
+	"items_edit_categories_empty": "Aucune catégorie disponible.",
 
 	"items_list_new": "Créer",
 	"items_list_search": "Trouver un item...",
