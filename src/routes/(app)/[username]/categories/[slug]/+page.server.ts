@@ -11,10 +11,6 @@ export const load: PageServerLoad = (async ({ parent }) => {
 		.where('items.user', '=', profile.id)
 		.where('category_items.category', '=', category.id)
 
-	// query = setCursor(query, url)
-	// query = setLimit(query, url)
-	// query = setSort(query, url)
-
 	const items = await query.execute()
 	return { items }
 }) satisfies PageServerLoad
