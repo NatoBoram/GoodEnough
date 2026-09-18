@@ -20,5 +20,5 @@
 	>
 		<h2 class="font-semibold">{item.name}</h2>
 	</a>
-	<p class="prose text-main">{item.summary}</p>
+	<p class="text-dim">{item.summary}</p>
 </div>

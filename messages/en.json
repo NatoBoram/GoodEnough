@@ -47,6 +47,14 @@
 	"categories_view_edit": "Edit",
 	"categories_view_edited": "Edited on {date}",
 
+	"cursor_sort_created": "Created",
+	"cursor_sort_updated": "Updated",
+	"cursor_sort_name": "Name",
+	"cursor_sort_id": "ID",
+	"cursor_direction_desc": "Descending",
+	"cursor_direction_asc": "Ascending",
+	"cursor_limit": "Limit",
+
 	"form_hint_description": "Accepts Markdown.",
 
 	"form_label_description": "Description",

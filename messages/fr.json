@@ -47,6 +47,11 @@
 	"categories_view_edit": "Modifier",
 	"categories_view_edited": "Modifié le {date}",
 
+	"cursor_sort_created": "Créé",
+	"cursor_sort_updated": "Modifié",
+	"cursor_sort_name": "Nom",
+	"cursor_sort_id": "ID",
+
 	"form_hint_description": "Accepte le Markdown.",
 
 	"form_label_description": "Description",
