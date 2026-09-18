@@ -1,6 +1,10 @@
-import { setLimit } from '$lib/cursor/limit.js'
-import { setSort } from '$lib/cursor/sort.js'
+import { getCursor } from '$lib/cursor/cursor.js'
+import { getLimit, setLimit } from '$lib/cursor/limit.js'
+import type { Page } from '$lib/cursor/page.js'
+import { getSort, setSort } from '$lib/cursor/sort.js'
 import { db } from '$lib/server/db/db.js'
+import type { Category } from '$lib/server/db/kysely-codegen.js'
+import type { Selectable } from 'kysely'
 import type { PageServerLoad } from './$types.ts'
 
 export const load: PageServerLoad = (async ({ url, parent }) => {
@@ -10,6 +14,13 @@ export const load: PageServerLoad = (async ({ url, parent }) => {
 	query = setSort(query, url)
 	query = setLimit(query, url)
 
-	const categories = await query.execute()
-	return { categories }
+	const categories = query.execute()
+	const page = categories.then<Page<Selectable<Category>>>(categories => ({
+		...getCursor(url),
+		limit: getLimit(url),
+		...getSort(url),
+		data: categories,
+	}))
+
+	return { page }
 }) satisfies PageServerLoad
