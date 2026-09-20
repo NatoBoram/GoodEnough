@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms'
 	import { OrderByDirection, Sortable } from '$lib/cursor/sort.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Snippet } from 'svelte'
@@ -26,12 +25,7 @@
 	}: Props = $props()
 </script>
 
-<form
-	method="GET"
-	use:enhance
-	action="?"
-	class="flex flex-row flex-wrap items-center gap-4 {className}"
->
+<form method="GET" action="?" class="flex flex-row flex-wrap items-center gap-4 {className}">
 	<input
 		type="text"
 		{placeholder}
