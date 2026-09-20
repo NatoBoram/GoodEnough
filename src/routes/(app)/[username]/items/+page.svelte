@@ -4,7 +4,7 @@
 	import { page } from '$app/state'
 	import { canEdit } from '$lib/auth/authorization.js'
 	import { nextCursor } from '$lib/cursor/cursor.js'
-	import CursorSearchForm from '$lib/cursor/CursorForm.svelte'
+	import CursorForm from '$lib/cursor/CursorForm.svelte'
 	import InfiniteScroll from '$lib/cursor/InfiniteScroll.svelte'
 	import { getLimit } from '$lib/cursor/limit.js'
 	import type { Page } from '$lib/cursor/page.js'
@@ -65,7 +65,7 @@
 </script>
 
 <div class="mx-auto mt-4">
-	<CursorSearchForm
+	<CursorForm
 		placeholder={m.items_list_search()}
 		bind:sort
 		bind:direction
@@ -82,7 +82,7 @@
 				</a>
 			{/if}
 		{/snippet}
-	</CursorSearchForm>
+	</CursorForm>
 
 	{#key initialPage}
 		<InfiniteScroll {initialPage} loadNext={nextPage} class="mt-4">

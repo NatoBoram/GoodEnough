@@ -4,7 +4,7 @@
 	import type { Selectable } from 'kysely'
 
 	interface Props {
-		readonly item: Pick<Selectable<Item>, 'name' | 'slug' | 'summary'>
+		readonly item: Pick<Selectable<Item>, 'id' | 'name' | 'slug' | 'summary'>
 		readonly profile: Pick<Selectable<User>, 'id' | 'username'>
 	}
 
