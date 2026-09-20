@@ -14,11 +14,15 @@ export const load: PageServerLoad = (async ({ url, parent }) => {
 	query = setSort(query, url)
 	query = setLimit(query, url)
 
+	const cursor = getCursor(url)
+	const limit = getLimit(url)
+	const sort = getSort(url)
+
 	const categories = query.execute()
 	const page = categories.then<Page<Selectable<Category>>>(categories => ({
-		...getCursor(url),
-		limit: getLimit(url),
-		...getSort(url),
+		...cursor,
+		limit,
+		...sort,
 		data: categories,
 	}))
 
