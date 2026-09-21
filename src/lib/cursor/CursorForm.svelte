@@ -2,11 +2,11 @@
 	import { OrderByDirection, Sortable } from '$lib/cursor/sort.js'
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Snippet } from 'svelte'
-	import type { ClassValue } from 'svelte/elements'
+	import type { HTMLFormAttributes } from 'svelte/elements'
 
 	interface Props {
 		readonly actions: Snippet
-		readonly class?: ClassValue
+		readonly class?: HTMLFormAttributes['class']
 		readonly direction?: OrderByDirection
 		readonly limit?: number
 		readonly onchange: () => Promise<void> | void

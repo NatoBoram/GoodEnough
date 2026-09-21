@@ -2,7 +2,7 @@
 	import type { Page } from '$lib/cursor/page.js'
 	import { Spinner } from '@natoboram/heroicons.svelte'
 	import { tick, untrack, type Snippet } from 'svelte'
-	import type { ClassValue } from 'svelte/elements'
+	import type { SvelteHTMLElements } from 'svelte/elements'
 	import type { SortableSelection } from './sort.js'
 
 	const {
@@ -11,7 +11,7 @@
 		loadNext,
 		row,
 	}: {
-		readonly class?: ClassValue
+		readonly class?: SvelteHTMLElements['div']['class']
 		readonly initialPage: Promise<Page<T>>
 		readonly loadNext: (lastRow: T) => Promise<Page<T>>
 		readonly row: Snippet<[T]>

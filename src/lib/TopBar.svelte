@@ -11,7 +11,7 @@
 		Sun,
 	} from '@natoboram/heroicons.svelte/24/solid'
 	import type { Selectable } from 'kysely'
-	import type { ClassValue } from 'svelte/elements'
+	import type { SvelteHTMLElements } from 'svelte/elements'
 	import { m } from './paraglide/messages.js'
 	import type { User } from './server/db/kysely-codegen.ts'
 	import type { Theme } from './theme.ts'
@@ -26,8 +26,7 @@
 		readonly toggleDark: () => void
 		readonly toggleLight: () => void
 		readonly user: TopBarUser | undefined
-
-		readonly class?: ClassValue | null | undefined
+		readonly class?: SvelteHTMLElements['nav']['class']
 	}
 
 	const {
