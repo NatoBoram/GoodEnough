@@ -9,4 +9,4 @@
 	const format = Intl.DateTimeFormat(getLocale(), dateTimeOptions)
 </script>
 
-<AttributeView attribute={data.attribute} {format} profile={data.profile} />
+<AttributeView class="mt-4" attribute={data.attribute} {format} profile={data.profile} />
