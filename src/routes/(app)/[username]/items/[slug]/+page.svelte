@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { dateOptions } from '$lib/date_time_format.js'
-	import ItemAttribute from '$lib/items/ItemAttribute.svelte'
+	import ItemAttributes from '$lib/items/ItemAttributes.svelte'
 	import ItemView from '$lib/items/ItemView.svelte'
 	import { getLocale } from '$lib/paraglide/runtime.js'
 	import type { PageProps } from './$types.ts'
@@ -12,6 +12,4 @@
 
 <ItemView item={data.item} description={data.description} profile={data.profile} {format} />
 
-{#each data.attributes as attribute (attribute.id)}
-	<ItemAttribute {attribute} {format} />
-{/each}
+<ItemAttributes attributes={data.attributes} {format} />
