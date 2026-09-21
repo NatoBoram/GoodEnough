@@ -10,6 +10,12 @@
 	const format = Intl.DateTimeFormat(getLocale(), dateOptions)
 </script>
 
-<ItemView item={data.item} description={data.description} profile={data.profile} {format} />
+<ItemView
+	{format}
+	class="mt-4"
+	description={data.description}
+	item={data.item}
+	profile={data.profile}
+/>
 
 <ItemAttributes class="mt-4" attributes={data.attributes} {format} />

@@ -3,6 +3,7 @@
 	import { m } from '$lib/paraglide/messages.js'
 	import type { Item, User } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
+	import type { SvelteHTMLElements } from 'svelte/elements'
 
 	interface Props {
 		readonly item: Pick<
@@ -12,12 +13,13 @@
 		readonly description: string
 		readonly profile: Pick<Selectable<User>, 'id' | 'username'>
 		readonly format: Intl.DateTimeFormat
+		readonly class?: SvelteHTMLElements['div']['class']
 	}
 
-	const { item, description, profile, format }: Props = $props()
+	const { item, description, profile, format, class: className }: Props = $props()
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 {className}">
 	<h1 class="text-lg font-bold">{item.name}</h1>
 
 	<p class="text-sm text-dim">{item.summary}</p>
