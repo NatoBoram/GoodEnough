@@ -12,4 +12,4 @@
 
 <ItemView item={data.item} description={data.description} profile={data.profile} {format} />
 
-<ItemAttributes attributes={data.attributes} {format} />
+<ItemAttributes class="mt-4" attributes={data.attributes} {format} />

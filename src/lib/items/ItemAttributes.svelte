@@ -2,6 +2,7 @@
 	import ItemAttribute from '$lib/items/ItemAttribute.svelte'
 	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
 	import type { Selectable } from 'kysely'
+	import type { SvelteHTMLElements } from 'svelte/elements'
 
 	interface Props {
 		readonly attributes: Pick<
@@ -16,11 +17,14 @@
 			| 'value_text'
 		>[]
 		readonly format: Intl.DateTimeFormat
+		readonly class?: SvelteHTMLElements['div']['class']
 	}
 
-	const { attributes, format }: Props = $props()
+	const { attributes, format, class: className }: Props = $props()
 </script>
 
-{#each attributes as attribute (attribute.id)}
-	<ItemAttribute {attribute} {format} />
-{/each}
+<div class="grid gap-2 sm:grid-cols-2 {className}">
+	{#each attributes as attribute (attribute.id)}
+		<ItemAttribute {attribute} {format} />
+	{/each}
+</div>

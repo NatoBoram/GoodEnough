@@ -21,10 +21,11 @@
 	const { attribute, format }: Props = $props()
 </script>
 
-<div>
-	<p>
-		{attribute.name}: <ItemAttributeValue value={attribute} {format} />
-	</p>
+<div class="rounded bg-surface p-4">
+	<div class="flex flex-row items-center justify-between">
+		<p class="font-semibold">{attribute.name}</p>
+		<ItemAttributeValue value={attribute} {format} />
+	</div>
 	<p>
 		{attribute.summary}
 	</p>
