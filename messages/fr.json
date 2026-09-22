@@ -67,6 +67,7 @@
 	"items_edit_title": "Modifier {name}",
 
 	"items_edit_attributes_title": "Modifier les attributs",
+	"items_edit_attributes_empty": "Aucun attribut disponible à modifier.",
 
 	"items_edit_categories_title": "Associer des catégories",
 	"items_edit_categories_empty": "Aucune catégorie disponible.",

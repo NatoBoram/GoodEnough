@@ -70,6 +70,7 @@
 	"items_edit_title": "Edit {name}",
 
 	"items_edit_attributes_title": "Edit attributes",
+	"items_edit_attributes_empty": "No attributes available to edit.",
 
 	"items_edit_categories_title": "Edit categories",
 	"items_edit_categories_empty": "No categories available.",

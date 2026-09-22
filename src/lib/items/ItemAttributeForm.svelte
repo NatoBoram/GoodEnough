@@ -38,5 +38,7 @@
 		<button type="submit" class="self-end rounded bg-success px-2 py-1">
 			{m.form_label_submit()}
 		</button>
+	{:else}
+		<p class="mx-auto max-w-xl text-dim italic">{m.items_edit_attributes_empty()}</p>
 	{/if}
 </form>
