@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CategoryAttribute from '$lib/categories/CategoryAttribute.svelte'
-	import CategoryItem from '$lib/categories/CategoryItem.svelte'
+	import CategoryAttributes from '$lib/categories/CategoryAttributes.svelte'
+	import CategoryItems from '$lib/categories/CategoryItems.svelte'
 	import CategoryView from '$lib/categories/CategoryView.svelte'
 	import { dateTimeOptions } from '$lib/date_time_format.js'
 	import { getLocale } from '$lib/paraglide/runtime.js'
@@ -21,12 +21,12 @@
 		user={data.user}
 	/>
 
-	{#each data.attributes as attribute (attribute.id)}
-		<CategoryAttribute {attribute}></CategoryAttribute>
-	{/each}
+	<CategoryAttributes
+		attributes={data.attributes}
+		category={data.category}
+		class="mt-4"
+		profile={data.profile}
+	/>
 
-	<!-- Property 'items' does not exist -->
-	{#each data.items as item (item.id)}
-		<CategoryItem {item} profile={data.profile}></CategoryItem>
-	{/each}
+	<CategoryItems items={data.items} profile={data.profile} class="mt-4" />
 </main>

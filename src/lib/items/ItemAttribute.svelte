@@ -17,7 +17,7 @@
 			| 'value_text'
 		>
 		readonly format: Intl.DateTimeFormat
-		readonly class: SvelteHTMLElements['div']['class']
+		readonly class?: SvelteHTMLElements['div']['class']
 	}
 
 	const { attribute, format, class: className }: Props = $props()

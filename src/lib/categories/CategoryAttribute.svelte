@@ -8,7 +8,15 @@
 	const { attribute }: Props = $props()
 </script>
 
-<div>
-	{attribute.name} <span class="text-sm text-dim">({attribute.type})</span>
-	<p>{attribute.summary}</p>
+<div class="rounded bg-surface p-4 shadow-sm">
+	<div class="flex flex-row items-baseline gap-2">
+		<h2 class="font-semibold">{attribute.name}</h2>
+		<span class="rounded-full bg-container px-2 py-1 text-xs text-dim">
+			{attribute.type}
+		</span>
+	</div>
+
+	{#if attribute.summary}
+		<p class="text-dim">{attribute.summary}</p>
+	{/if}
 </div>
