@@ -1,8 +1,25 @@
 <script module lang="ts">
-	import type { Attribute } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, User } from '$lib/server/db/kysely-codegen.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import CategoryAttributes from './CategoryAttributes.svelte'
+
+	const admin = {
+		id: 'b6341290-e45b-4c5e-a55c-d2a68ebb5c85',
+		role: 'admin',
+	} as const satisfies Pick<Selectable<User>, 'id' | 'role'>
+
+	const profile = {
+		id: '3f458d71-0197-43ab-a4e2-8a4cad1f2655',
+		username: 'profilename',
+		role: 'user',
+	} as const satisfies Pick<Selectable<User>, 'id' | 'role'> &
+		Pick<Selectable<User>, 'id' | 'username'>
+
+	const user = {
+		id: 'd306ddc4-7deb-4b1f-a5ce-9d77ee1dd11a',
+		role: 'user',
+	} as const satisfies Pick<Selectable<User>, 'id' | 'role'>
 
 	const { Story } = defineMeta({
 		title: 'Categories/CategoryAttributes',
@@ -11,7 +28,8 @@
 		argTypes: {},
 		args: {
 			category: { id: '21e4cec2-abaf-43d5-8fe5-5898cb6da3e0', slug: 'teas' },
-			profile: { id: '3f458d71-0197-43ab-a4e2-8a4cad1f2655', username: 'profilename' },
+			profile,
+			user,
 		},
 	})
 
@@ -45,4 +63,8 @@
 
 <Story name="Default" args={{ attributes }} />
 
-<Story name="Empty" args={{ attributes: [] }} />
+<Story name="User" args={{ attributes: [] }} />
+
+<Story name="Owner" args={{ attributes: [], user: profile }} />
+
+<Story name="Admin" args={{ attributes: [], user: admin }} />
