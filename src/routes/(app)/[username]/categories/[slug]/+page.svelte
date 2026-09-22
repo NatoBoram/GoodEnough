@@ -15,6 +15,7 @@
 	<CategoryView
 		{format}
 		category={data.category}
+		class="mt-4"
 		description={data.description}
 		profile={data.profile}
 		user={data.user}
