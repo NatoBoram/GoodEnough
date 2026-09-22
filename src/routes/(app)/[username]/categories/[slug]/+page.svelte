@@ -26,6 +26,7 @@
 		category={data.category}
 		class="mt-4"
 		profile={data.profile}
+		user={data.user}
 	/>
 
 	<CategoryItems items={data.items} profile={data.profile} class="mt-4" />

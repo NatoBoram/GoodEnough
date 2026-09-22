@@ -12,7 +12,7 @@
 		readonly profile: Pick<Selectable<User>, 'id' | 'username'>
 		readonly category: Pick<Selectable<Category>, 'id' | 'slug'>
 		readonly class?: SvelteHTMLElements['div']['class']
-		readonly user: Pick<Selectable<User>, 'id' | 'role'>
+		readonly user: Pick<Selectable<User>, 'id' | 'role'> | undefined
 	}
 
 	const { attributes, class: className, profile, category, user }: Props = $props()
