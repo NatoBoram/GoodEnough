@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { dateOptions } from '$lib/date_time_format.js'
-	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, AttributeValue } from '$lib/server/db/schema.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import ItemAttribute from './ItemAttribute.svelte'

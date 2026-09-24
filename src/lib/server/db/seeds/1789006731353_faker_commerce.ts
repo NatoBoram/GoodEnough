@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import type { InsertObject, Kysely, Selectable } from 'kysely'
 import { randomPercent } from '../../../faker/random.js'
-import type { Category, DB, User } from '../kysely-codegen.ts'
+import type { Category, DB, User } from '../schema.ts'
 import { usernameToEmail } from '../utils.ts'
 
 async function upsertCategory(

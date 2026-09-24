@@ -12,7 +12,7 @@
 	import type { SortableSelection } from '$lib/cursor/sort.js'
 	import { getDirection, getSortable, SortableColumns, toSortable } from '$lib/cursor/sort.js'
 	import { m } from '$lib/paraglide/messages.js'
-	import type { Category } from '$lib/server/db/kysely-codegen.js'
+	import type { Category } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 	import { SvelteURLSearchParams } from 'svelte/reactivity'
 	import type { PageProps } from './$types.ts'

@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import type { Page } from '$lib/cursor/page.js'
 	import ItemRow from '$lib/items/ItemRow.svelte'
-	import type { Item, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Item, User } from '$lib/server/db/schema.js'
 	import { defineMeta, type StoryContext } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import { fn } from 'storybook/test'

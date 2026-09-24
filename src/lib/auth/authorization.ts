@@ -13,7 +13,7 @@
  * @module
  */
 
-import type { User } from '$lib/server/db/kysely-codegen.js'
+import type { User } from '$lib/server/db/schema.js'
 import type { Selectable } from 'kysely'
 
 export type Role = (typeof Role)[keyof typeof Role]

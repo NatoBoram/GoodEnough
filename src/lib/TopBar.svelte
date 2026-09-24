@@ -13,7 +13,7 @@
 	import type { Selectable } from 'kysely'
 	import type { SvelteHTMLElements } from 'svelte/elements'
 	import { m } from './paraglide/messages.js'
-	import type { User } from './server/db/kysely-codegen.ts'
+	import type { User } from './server/db/schema.ts'
 	import type { Theme } from './theme.ts'
 
 	export type TopBarUser = Pick<Selectable<User>, 'id' | 'name' | 'username'>

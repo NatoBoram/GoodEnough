@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths'
-	import type { Attribute, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, User } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 
 	interface Props {

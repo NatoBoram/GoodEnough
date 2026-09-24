@@ -1,4 +1,4 @@
-import type { AttributeType } from './server/db/kysely-codegen.ts'
+import type { AttributeType } from './server/db/schema.ts'
 
 /** 2^6 */
 export const maxName = 64

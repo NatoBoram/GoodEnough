@@ -7,7 +7,7 @@ import {
 	POSTGRES_PORT,
 	POSTGRES_USER,
 } from '../env.ts'
-import type { DB } from './kysely-codegen.ts'
+import type { DB } from './schema.ts'
 
 export const pool: Pool = new Pool({
 	database: POSTGRES_DB,

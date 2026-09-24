@@ -2,7 +2,7 @@
 	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/state'
 	import { authClient } from '$lib/client/auth_client.js'
-	import type { User } from '$lib/server/db/kysely-codegen.js'
+	import type { User } from '$lib/server/db/schema.js'
 	import type { Theme } from '$lib/theme.js'
 	import { applyTheme, toTheme } from '$lib/theme.js'
 	import TopBar from '$lib/TopBar.svelte'

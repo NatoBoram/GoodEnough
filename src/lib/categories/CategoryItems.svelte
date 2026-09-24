@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Item, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Item, User } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 	import type { SvelteHTMLElements } from 'svelte/elements'
 	import CategoryItem from './CategoryItem.svelte'

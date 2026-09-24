@@ -8,5 +8,6 @@
 	},
 	"files.associations": {
 		"*.css": "tailwindcss"
-	}
+	},
+	"js/ts.experimental.useTsgo": false
 }

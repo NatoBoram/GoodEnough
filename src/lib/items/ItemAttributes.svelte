@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ItemAttribute from '$lib/items/ItemAttribute.svelte'
-	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, AttributeValue } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 	import type { SvelteHTMLElements } from 'svelte/elements'
 

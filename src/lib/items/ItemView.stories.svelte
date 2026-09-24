@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import { dateTimeOptions } from '$lib/date_time_format.js'
 	import { parseMarkdown } from '$lib/markdown.js'
-	import type { Item, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Item, User } from '$lib/server/db/schema.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import ItemView from './ItemView.svelte'

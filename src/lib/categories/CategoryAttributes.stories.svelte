@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { Attribute, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, User } from '$lib/server/db/schema.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import CategoryAttributes from './CategoryAttributes.svelte'

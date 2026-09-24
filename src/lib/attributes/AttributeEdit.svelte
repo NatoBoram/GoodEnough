@@ -3,7 +3,7 @@
 	import { edit } from '$lib/client/form.js'
 	import { maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
-	import type { Attribute } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 
 	interface Props {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js'
-	import type { Attribute, AttributeValue } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, AttributeValue } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 
 	interface Props {

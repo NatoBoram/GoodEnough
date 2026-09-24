@@ -1,6 +1,6 @@
 import type { Selectable } from 'kysely'
 import { db } from './db.ts'
-import type { Attribute, AttributeValue, Item, User } from './kysely-codegen.ts'
+import type { Attribute, AttributeValue, Item, User } from './schema.ts'
 
 export async function getItemAttributeValues(
 	item: Pick<Selectable<Item>, 'id'>,

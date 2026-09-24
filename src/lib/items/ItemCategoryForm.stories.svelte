@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { Category, CategoryItem } from '$lib/server/db/kysely-codegen.js'
+	import type { Category, CategoryItem } from '$lib/server/db/schema.js'
 	import { defineMeta } from '@storybook/addon-svelte-csf'
 	import type { Selectable } from 'kysely'
 	import ItemCategoryForm from './ItemCategoryForm.svelte'

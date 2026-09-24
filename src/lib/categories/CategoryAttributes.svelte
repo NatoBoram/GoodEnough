@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths'
 	import { canEdit } from '$lib/auth/authorization.js'
 	import { m } from '$lib/paraglide/messages.js'
-	import type { Attribute, Category, User } from '$lib/server/db/kysely-codegen.js'
+	import type { Attribute, Category, User } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 	import type { SvelteHTMLElements } from 'svelte/elements'
 	import CategoryAttribute from './CategoryAttribute.svelte'

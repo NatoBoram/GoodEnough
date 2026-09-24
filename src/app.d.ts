@@ -1,4 +1,4 @@
-import type { User } from '$lib/server/db/kysely-codegen.ts'
+import type { User } from '$lib/server/db/schema.ts'
 import type { Session } from 'better-auth'
 import type { Selectable } from 'kysely'
 

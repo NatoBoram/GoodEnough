@@ -1,4 +1,4 @@
-import type { DB, Item } from '$lib/server/db/kysely-codegen.js'
+import type { DB, Item } from '$lib/server/db/schema.js'
 import type { ComparisonOperator, SelectQueryBuilder } from 'kysely'
 
 export interface SortableSelection {

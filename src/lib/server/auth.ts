@@ -7,7 +7,7 @@ import { sveltekitCookies } from 'better-auth/svelte-kit'
 import pkg from '../../../package.json' with { type: 'json' }
 import type { AdminPlugin, Database, SvelteKitCookiesPlugin } from '../types/better_auth.ts'
 import { db } from './db/db.ts'
-import type { DB } from './db/kysely-codegen.ts'
+import type { DB } from './db/schema.ts'
 import { BETTER_AUTH_SECRET, BETTER_AUTH_URL } from './env.ts'
 
 const adminOptions: AdminOptions = {

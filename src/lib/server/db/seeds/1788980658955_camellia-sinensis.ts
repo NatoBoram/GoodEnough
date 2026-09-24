@@ -1,5 +1,5 @@
 import type { Kysely } from 'kysely'
-import type { DB } from '../kysely-codegen.ts'
+import type { DB } from '../schema.ts'
 import { usernameToEmail } from '../utils.ts'
 
 /**

@@ -2,8 +2,8 @@ import { resolve } from '$app/paths'
 import { canEdit } from '$lib/auth/authorization.js'
 import { asyncResult } from '$lib/result.js'
 import { db } from '$lib/server/db/db.js'
-import type { CategoryItem } from '$lib/server/db/kysely-codegen.js'
 import { getItemAttributeValues } from '$lib/server/db/queries.js'
+import type { CategoryItem } from '$lib/server/db/schema.js'
 import {
 	getFormBoolean,
 	getFormDate,

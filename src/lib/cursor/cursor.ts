@@ -1,4 +1,4 @@
-import type { DB } from '$lib/server/db/kysely-codegen.js'
+import type { DB } from '$lib/server/db/schema.js'
 import { isUuid } from '$lib/uuid.js'
 import type { SelectQueryBuilder } from 'kysely'
 import { sql } from 'kysely'

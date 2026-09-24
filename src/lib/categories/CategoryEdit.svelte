@@ -3,7 +3,7 @@
 	import { edit } from '$lib/client/form.js'
 	import { maxDescription, maxName, maxSlug, maxSummary } from '$lib/forms.js'
 	import { m } from '$lib/paraglide/messages.js'
-	import type { Category } from '$lib/server/db/kysely-codegen.js'
+	import type { Category } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 	import type { HTMLFormAttributes } from 'svelte/elements'
 

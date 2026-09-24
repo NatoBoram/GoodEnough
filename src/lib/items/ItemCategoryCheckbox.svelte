@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Category } from '$lib/server/db/kysely-codegen.js'
+	import type { Category } from '$lib/server/db/schema.js'
 	import type { Selectable } from 'kysely'
 
 	interface Props {
