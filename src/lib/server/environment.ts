@@ -1,13 +1,9 @@
-import { asyncResult } from '$lib/result.js'
+const environment = await import('$app/environment').catch(() => ({
+	browser: false,
+	building: true,
+	dev: false,
+}))
 
-async function isBuilding() {
-	const environment = await asyncResult(import('$app/environment'), 'importing $app/environment')
-	if (!environment.ok) return true
-	return environment.value.building
-}
-
-/**
- * SvelteKit analyses your app during the `build` step by running it. During this process,
- * `building` is `true`. This also applies during prerendering.
- */
-export const building: boolean = await isBuilding()
+export const browser: boolean = environment.browser
+export const building: boolean = environment.building
+export const dev: boolean = environment.dev
