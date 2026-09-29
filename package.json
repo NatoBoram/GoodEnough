@@ -37,6 +37,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"clean": "rm -rf .svelte-kit build coverage dist node_modules storybook-static tsconfig.tsbuildinfo",
 		"preview": "vite preview",
 		"docker": "pnpm run docker:build && pnpm run docker:run",
 		"docker:build": "docker build -t natoboram/goodenough .",
