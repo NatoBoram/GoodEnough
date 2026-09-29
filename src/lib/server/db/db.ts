@@ -9,7 +9,7 @@ import {
 } from '../env.ts'
 import type { DB } from './schema.ts'
 
-export const pool: Pool = new Pool({
+const pool = new Pool({
 	database: POSTGRES_DB,
 	host: POSTGRES_HOST,
 	password: POSTGRES_PASSWORD,

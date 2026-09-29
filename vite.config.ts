@@ -25,7 +25,12 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true,
 			},
 			adapter: adapter(),
-			typescript: {},
+			typescript: {
+				config: config => {
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+					config['include'].push('../kysely.config.ts')
+				},
+			},
 		}),
 		paraglideVitePlugin({
 			project: './project.inlang',
