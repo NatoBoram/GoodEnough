@@ -109,17 +109,5 @@ jobs:
             [dependabot skip]
           skip-empty: true
 
-      - run: |
-          pnpm run build-heroicons
-          git add .
-      - id: commit-heroicons
-        uses: qoomon/actions--create-commit@v1
-        with:
-          message: |
-            🍱 pnpm run build-heroicons
-
-            [dependabot skip]
-          skip-empty: true
-
-      - if: steps.commit-lockfile.outputs.commit || steps.commit-ts-autofix.outputs.commit || steps.commit-format.outputs.commit || steps.commit-lint.outputs.commit || steps.commit-heroicons.outputs.commit
+      - if: steps.commit-lockfile.outputs.commit || steps.commit-ts-autofix.outputs.commit || steps.commit-format.outputs.commit || steps.commit-lint.outputs.commit
         run: git push
